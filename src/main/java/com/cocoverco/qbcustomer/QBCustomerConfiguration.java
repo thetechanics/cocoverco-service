@@ -1,11 +1,11 @@
 //Create this package under 'root/src/main/java'
-package com.example.helloworld;
+package com.cocoverco.qbcustomer;
 
 import io.dropwizard.Configuration;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.validator.constraints.NotEmpty;
 
-public class HelloWorldConfiguration extends Configuration {
+public class QBCustomerConfiguration extends Configuration {
     @NotEmpty
     private String template;
 

@@ -19,7 +19,7 @@
               <transformers>
                 <transformer />
                 <transformer>
-                  <mainClass>com.example.helloworld.HelloWorldApplication</mainClass>
+                  <mainClass>com.cocoverco.qbcustomer.QBCustomerApplication</mainClass>
                 </transformer>
               </transformers>
             </configuration>

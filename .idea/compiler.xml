@@ -22,10 +22,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+        <module name="cocoverco-service" />
         <module name="hello-world-example" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="cocoverco-service" target="1.5" />
       <module name="hello-world-example" target="1.5" />
     </bytecodeTargetLevel>
   </component>

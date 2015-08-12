@@ -1,6 +1,6 @@
-package com.example.helloworld.resources;
+package com.cocoverco.qbcustomer.resources;
 
-import com.example.helloworld.core.Saying;
+import com.cocoverco.qbcustomer.core.Saying;
 import com.google.common.base.Optional;
 import com.codahale.metrics.annotation.Timed;
 //import com.sun.xml.internal.bind.v2.TODO;
@@ -15,12 +15,12 @@ import java.util.concurrent.atomic.AtomicLong;
 //@Path determines path to call service (e.g. http://localhost:8080/cocoverco-service)
 @Path("/cocoverco-service")
 @Produces(MediaType.APPLICATION_JSON)
-public class HelloWorldResource {
+public class QBCustomerResource {
     private final String template;
     private final String defaultName;
     private final AtomicLong counter;
 
-    public HelloWorldResource(String template, String defaultName) {
+    public QBCustomerResource(String template, String defaultName) {
         this.template = template;
         this.defaultName = defaultName;
         this.counter = new AtomicLong();
