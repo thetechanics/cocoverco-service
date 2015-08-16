@@ -37,11 +37,12 @@ public class QBCustomerResource {
     @Produces(MediaType.APPLICATION_XML)
     public Customer getCustomer(@FormParam("first_name") String first_name,
                                 @FormParam("last_name") String last_name,
-                                @FormParam("street_1") String street_1,
-                                @FormParam("street_2") String street_2,
+                                @FormParam("street_1") String addr_1,
+                                @FormParam("street_2") String addr_2,
                                 @FormParam("city") String city,
                                 @FormParam("state") String state,
                                 @FormParam("postal_code") String postal_code,
+                                @FormParam("telephone_number") String telephone_number,
                                 @FormParam("email_address") String email_address,
                                 @FormParam("email_pref") String email_pref,
                                 @FormParam("telephone_pref") String telephone_pref,
@@ -49,14 +50,23 @@ public class QBCustomerResource {
 
         final Customer customer = new Customer();
 
+        customer.name = customer.getName();
+        customer.is_active = customer.getIsActive();
+        customer.company_name = customer.getCompanyName();
+        customer.salutation = customer.getSalutation();
         customer.first_name = first_name;
         customer.last_name = last_name;
-        customer.street_1 = street_1;
-        customer.street_2 = street_2;
+        customer.addr_1 = addr_1;
+        customer.addr_2 = addr_2;
         customer.city = city;
         customer.state = state;
         customer.postal_code = postal_code;
+        customer.telephone_number = telephone_number;
+        customer.alt_telephone_number = customer.getAltTelephoneNumber();
         customer.email_address = email_address;
+        customer.full_name = customer.getFullName();
+        customer.account_number = customer.getAccountNumber();
+        customer.credit_limit = customer.getCreditLimit();
         customer.email_pref = email_pref;
         customer.telephone_pref = telephone_pref;
         customer.comment = comment;
