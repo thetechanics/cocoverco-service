@@ -13,21 +13,25 @@ public class QBCustomerConfiguration extends Configuration {
     private String defaultName = "Stranger";
 
     @JsonProperty
+    //@JsonProperty tells dropwizard to reference the YAML file
     public String getTemplate() {
         return template;
     }
 
     @JsonProperty
+    //@JsonProperty tells dropwizard to reference the YAML file
     public void setTemplate(String template) {
         this.template = template;
     }
 
     @JsonProperty
+    //@JsonProperty tells dropwizard to reference the YAML file
     public String getDefaultName() {
         return defaultName;
     }
 
     @JsonProperty
+    //@JsonProperty tells dropwizard to reference the YAML file
     public void setDefaultName(String name) {
         this.defaultName = name;
     }

@@ -22,7 +22,7 @@ public class QBCustomerResource {
     //Declare counter variable as AtomicLong
     private final AtomicLong counter;
 
-    //QBCustomerResource constructor that takes to String parameters
+    //QBCustomerResource constructor that takes two String parameters
     public QBCustomerResource(String template, String defaultName) {
         //Define this instance of the 'template' variable as the parameter 'template'
         this.template = template;
@@ -43,12 +43,28 @@ public class QBCustomerResource {
     //@Timed will generate a Jersey metric for the time spent in the method
     @Timed
     //The 'sayHello' method takes the 'first_name' parameter value from the client as well as an optional String parameter
-    //@QueryParam("first_name") captures the value of the 'first_name' parameter sent by the client.
-    public Saying sayHello(@FormParam("first_name") Optional<String> name) {
+    //@FormParam("first_name") captures the value of the 'first_name' parameter from the client POST request.
+    //The incoming parameter is cast an an 'Optional' object, with a String constructor
+    public Saying sayHello(@FormParam("first_name") Optional<String> name,
+                           @FormParam("last_name") Optional<String> last_name,
+                           @FormParam("street_1") Optional<String> street_1,
+                           @FormParam("street_2") Optional<String> street_2,
+                           @FormParam("city") Optional<String> city,
+                           @FormParam("state") Optional<String> state,
+                           @FormParam("postal_code") Optional<String> postal_code,
+                           @FormParam("email_address") Optional<String> email_address,
+                           @FormParam("email_pref") Optional<String> email_pref,
+                           @FormParam("telephone_pref") Optional<String> telephone_pref,
+                           @FormParam("comment") Optional<String> comment ) {
 //    public Saying sayHello(@QueryParam("first_name") Optional<String> name) {
         //Define the String variable 'value' using the 'template' format provided in the constructor
         //??? - If parameter'name' is null, then use the defaultName parameter from the constructor ???
-        final String value = String.format(template, name.or(defaultName));
+        //NOTE - To add field to the output, add a form parameter to the 'Saying' call (e.g. last_name)
+        //add a String object (e.g. %s) to the template (e.g. cocoverco-service.yml) and an additional parameter to 'format' (e.g. last_name.or(""))
+        final String value = String.format(template,
+                name.or(defaultName),
+                last_name.or(""),
+                street_1.or(""));
         //Return a new Saying object to the client with an incremented counter and the formatted String 'value' variable
         return new Saying(counter.incrementAndGet(), value);
 

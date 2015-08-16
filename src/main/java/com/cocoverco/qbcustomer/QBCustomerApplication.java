@@ -6,8 +6,11 @@ import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import com.cocoverco.qbcustomer.health.TemplateHealthCheck;
 
+//Application class with 'main' method.  Extends Application super class with Configuration parameter
 public class QBCustomerApplication extends Application<QBCustomerConfiguration> {
+    //psvm
     public static void main(String[] args) throws Exception {
+        //Call local 'run' method.  Pass command line arguments (dropwizard YML file).  e.g. 'java -jar ... server cocoverco-service.yml'
         new QBCustomerApplication().run(args);
     }
 
