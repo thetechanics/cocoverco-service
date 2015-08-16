@@ -1,6 +1,7 @@
 package com.cocoverco.qbcustomer.resources;
 
 import com.cocoverco.qbcustomer.core.Saying;
+import com.cocoverco.qbcustomer.core.Customer;
 import com.google.common.base.Optional;
 import com.codahale.metrics.annotation.Timed;
 //import com.sun.xml.internal.bind.v2.TODO;
@@ -12,7 +13,7 @@ import java.util.concurrent.atomic.AtomicLong;
 //@Path determines path to call the service (e.g. http://localhost:8080/cocoverco-service)
 @Path("/cocoverco-service")
 //@Produces indicates that the media type returned by the server.  In this case JSON
-@Produces(MediaType.APPLICATION_JSON)
+//!!! Working JSON resource return type:  @Produces(MediaType.APPLICATION_JSON)
 //Jersey resource class to define the behavior for a specific URI.  e.g. <Base URL>/cocoverco-service
 public class QBCustomerResource {
     //Declare template variable as String
@@ -32,9 +33,42 @@ public class QBCustomerResource {
         this.counter = new AtomicLong();
     }
 
+    @POST
+    @Produces(MediaType.APPLICATION_XML)
+    public Customer getCustomer(@FormParam("first_name") String first_name,
+                                @FormParam("last_name") String last_name,
+                                @FormParam("street_1") String street_1,
+                                @FormParam("street_2") String street_2,
+                                @FormParam("city") String city,
+                                @FormParam("state") String state,
+                                @FormParam("postal_code") String postal_code,
+                                @FormParam("email_address") String email_address,
+                                @FormParam("email_pref") String email_pref,
+                                @FormParam("telephone_pref") String telephone_pref,
+                                @FormParam("comment") String comment){
+
+        final Customer customer = new Customer();
+
+        customer.first_name = first_name;
+        customer.last_name = last_name;
+        customer.street_1 = street_1;
+        customer.street_2 = street_2;
+        customer.city = city;
+        customer.state = state;
+        customer.postal_code = postal_code;
+        customer.email_address = email_address;
+        customer.email_pref = email_pref;
+        customer.telephone_pref = telephone_pref;
+        customer.comment = comment;
+
+        return customer;
+
+    }
+
+
     //Use @POST for HTML form POST request (parameters not visible in URI)
     //@POST determs what method is executed when a POST request is submitted to the service
-    @POST
+    //!!! Working JSON resource post type:  @POST
     //Jersey @FormParam paramter annotation requires '@Consumes("application/x-www-form-urlencoded"'
     @Consumes("application/x-www-form-urlencoded")
     // Use @GET for HTML form GET requests (parameters visible in URI)
