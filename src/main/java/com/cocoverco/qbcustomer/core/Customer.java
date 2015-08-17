@@ -7,13 +7,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class Customer {
+    //The property order determines the XML field order
     public String name;
 
     public String is_active;
 
     public String company_name;
-
-    public String salutation;
 
     public String first_name;
 
@@ -30,6 +29,8 @@ public class Customer {
     public String postal_code;
 
     public String telephone_number;
+
+    public String salutation;
 
     public String alt_telephone_number;
 
@@ -59,9 +60,11 @@ public class Customer {
                     String state,
                     String postal_code,
                     String telephone_number,
+                    String salutation,
                     String email_pref,
                     String telephone_pref,
                     String comment) {
+
         this.name =  first_name + " " + last_name;
         this.is_active = "1";
         this.first_name = first_name;
@@ -72,6 +75,7 @@ public class Customer {
         this.state = state;
         this.postal_code = postal_code;
         this.telephone_number = telephone_number;
+        this.salutation = salutation;
         this.alt_telephone_number = "";
         this.email_pref = email_pref;
         this.full_name = name;
@@ -89,9 +93,6 @@ public class Customer {
 
     @JsonProperty
     public String getCompanyName() { return company_name; }
-
-    @JsonProperty
-    public String getSalutation() { return salutation; }
 
     @JsonProperty
     public String getFirstName() { return first_name; }
@@ -116,6 +117,9 @@ public class Customer {
 
     @JsonProperty
     public String getTelephoneNumber() { return telephone_number; }
+
+    @JsonProperty
+    public String getSalutation() { return salutation; }
 
     @JsonProperty
     public String getAltTelephoneNumber() { return alt_telephone_number; }

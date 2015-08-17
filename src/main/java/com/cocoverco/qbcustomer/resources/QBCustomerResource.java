@@ -33,6 +33,7 @@ public class QBCustomerResource {
         this.counter = new AtomicLong();
     }
 
+    //The presence of the parameter in the method signature determines the presence of the value in the XML
     @POST
     @Produces(MediaType.APPLICATION_XML)
     public Customer getCustomer(@FormParam("first_name") String first_name,
@@ -43,6 +44,7 @@ public class QBCustomerResource {
                                 @FormParam("state") String state,
                                 @FormParam("postal_code") String postal_code,
                                 @FormParam("telephone_number") String telephone_number,
+                                String salutation,
                                 @FormParam("email_address") String email_address,
                                 @FormParam("email_pref") String email_pref,
                                 @FormParam("telephone_pref") String telephone_pref,
@@ -53,7 +55,6 @@ public class QBCustomerResource {
         customer.name = customer.getName();
         customer.is_active = customer.getIsActive();
         customer.company_name = customer.getCompanyName();
-        customer.salutation = customer.getSalutation();
         customer.first_name = first_name;
         customer.last_name = last_name;
         customer.addr_1 = addr_1;
@@ -61,6 +62,7 @@ public class QBCustomerResource {
         customer.city = city;
         customer.state = state;
         customer.postal_code = postal_code;
+        customer.salutation = "XML Test";
         customer.telephone_number = telephone_number;
         customer.alt_telephone_number = customer.getAltTelephoneNumber();
         customer.email_address = email_address;
