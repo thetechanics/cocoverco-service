@@ -3,9 +3,10 @@ package com.cocoverco.qbcustomer.core;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.validator.constraints.Length;
 
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement
+@XmlRootElement(name = "QBXML")
 public class Customer {
     //The property order determines the XML field order
     public String name;
@@ -13,6 +14,8 @@ public class Customer {
     public String is_active;
 
     public String company_name;
+
+    public String salutation;
 
     public String first_name;
 
@@ -29,8 +32,6 @@ public class Customer {
     public String postal_code;
 
     public String telephone_number;
-
-    public String salutation;
 
     public String alt_telephone_number;
 
@@ -85,64 +86,84 @@ public class Customer {
         this.comment = comment;
     }
 
-    @JsonProperty
+    //@JsonProperty
+    @XmlElement
     public String getName() { return name; }
 
-    @JsonProperty
+    //@JsonProperty
+    @XmlElement
     public String getIsActive() { return is_active; }
 
-    @JsonProperty
+    //@JsonProperty
+    @XmlElement
     public String getCompanyName() { return company_name; }
 
-    @JsonProperty
+    //@JsonProperty
+    @XmlElement
     public String getFirstName() { return first_name; }
 
-    @JsonProperty
+    //@JsonProperty
+    @XmlElement
     public String getLastName() { return last_name; }
 
-    @JsonProperty
+    //@JsonProperty
+    @XmlElement
     public String getAddr1() { return addr_1; }
 
-    @JsonProperty
+    //@JsonProperty
+    @XmlElement
     public String getAddr2() { return addr_2; }
 
-    @JsonProperty
+    //@JsonProperty
+    @XmlElement
     public String getCity() { return city; }
 
-    @JsonProperty
+    //@JsonProperty
+    @XmlElement
     public String getState() { return state; }
 
-    @JsonProperty
+    //@JsonProperty
+    @XmlElement
     public String getPostalCode() { return postal_code; }
 
-    @JsonProperty
+    //@JsonProperty
+    @XmlElement
     public String getTelephoneNumber() { return telephone_number; }
 
-    @JsonProperty
+    //@JsonProperty
+    @XmlElement
     public String getSalutation() { return salutation; }
 
-    @JsonProperty
+    //@JsonProperty
+    @XmlElement
     public String getAltTelephoneNumber() { return alt_telephone_number; }
 
-    @JsonProperty
+    //@JsonProperty
+    @XmlElement
     public String getEmailAddress() { return email_address; }
 
-    @JsonProperty
+    //@JsonProperty
+    @XmlElement
     public String getFullName() { return full_name; }
 
-    @JsonProperty
+    //@JsonProperty
+    @XmlElement
     public String getAccountNumber() { return account_number; }
 
-    @JsonProperty
+    //@JsonProperty
+    @XmlElement
     public String getCreditLimit() { return credit_limit; }
 
-    @JsonProperty
+    //@JsonProperty
+    @XmlElement
     public String getEmailPref() { return email_pref; }
 
-    @JsonProperty
+    //@JsonProperty
+    @XmlElement
     public String getTelephonePref() { return telephone_pref; }
 
-    @JsonProperty
+    //@JsonProperty
+    @XmlElement
     public String getComment() { return comment; }
 
 }
