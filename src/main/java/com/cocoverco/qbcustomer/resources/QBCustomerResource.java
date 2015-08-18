@@ -47,15 +47,7 @@ public class QBCustomerResource {
                                 @FormParam("email_address") String email_address,
                                 @FormParam("email_pref") String email_pref,
                                 @FormParam("telephone_pref") String telephone_pref,
-                                @FormParam("comment") String comment,
-                                String name/*,
-                                String is_active,
-                                String company_name,
-                                String salutation,
-                                String alt_telephone_number,
-                                String full_name,
-                                String account_number,
-                                String credit_limit*/){
+                                @FormParam("comment") String comment){
 
         final Customer customer = new Customer();
 
