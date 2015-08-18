@@ -87,15 +87,15 @@ public class Customer {
     }
 
     //@JsonProperty
-    @XmlElement
+    //@XmlElement
     public String getName() { return name; }
 
     //@JsonProperty
-    @XmlElement
+    //@XmlElement
     public String getIsActive() { return is_active; }
 
     //@JsonProperty
-    @XmlElement
+    //@XmlElement
     public String getCompanyName() { return company_name; }
 
     //@JsonProperty
@@ -103,67 +103,67 @@ public class Customer {
     public String getFirstName() { return first_name; }
 
     //@JsonProperty
-    @XmlElement
+    //@XmlElement
     public String getLastName() { return last_name; }
 
     //@JsonProperty
-    @XmlElement
+    //@XmlElement
     public String getAddr1() { return addr_1; }
 
     //@JsonProperty
-    @XmlElement
+    //@XmlElement
     public String getAddr2() { return addr_2; }
 
     //@JsonProperty
-    @XmlElement
+    //@XmlElement
     public String getCity() { return city; }
 
     //@JsonProperty
-    @XmlElement
+    //@XmlElement
     public String getState() { return state; }
 
     //@JsonProperty
-    @XmlElement
+    //@XmlElement
     public String getPostalCode() { return postal_code; }
 
     //@JsonProperty
-    @XmlElement
+    //@XmlElement
     public String getTelephoneNumber() { return telephone_number; }
 
     //@JsonProperty
-    @XmlElement
+    //@XmlElement
     public String getSalutation() { return salutation; }
 
     //@JsonProperty
-    @XmlElement
+    //@XmlElement
     public String getAltTelephoneNumber() { return alt_telephone_number; }
 
     //@JsonProperty
-    @XmlElement
+    //@XmlElement
     public String getEmailAddress() { return email_address; }
 
     //@JsonProperty
-    @XmlElement
+    //@XmlElement
     public String getFullName() { return full_name; }
 
     //@JsonProperty
-    @XmlElement
+    //@XmlElement
     public String getAccountNumber() { return account_number; }
 
     //@JsonProperty
-    @XmlElement
+    //@XmlElement
     public String getCreditLimit() { return credit_limit; }
 
     //@JsonProperty
-    @XmlElement
+    //@XmlElement
     public String getEmailPref() { return email_pref; }
 
     //@JsonProperty
-    @XmlElement
+    //@XmlElement
     public String getTelephonePref() { return telephone_pref; }
 
     //@JsonProperty
-    @XmlElement
+    //@XmlElement
     public String getComment() { return comment; }
 
 }
