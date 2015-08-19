@@ -76,17 +76,19 @@ public class Customer {
 
         setFamiliarName("");
 
-        //setIsActive("");
+        setIsActive("");
 
         setCompanyName("");
 
-        //setAltTelephoneNumber("");
+//        setSalutation("");
 
-        //setFullName("");
+//        setAltTelephoneNumber("");
 
-        //setAccountNumber("");
+//        setFullName("");
 
-        //setCreditLimit("");
+//        setAccountNumber("");
+
+//        setCreditLimit("");
 
         }
 
@@ -127,88 +129,60 @@ public class Customer {
 
     public String getFamiliarName() { return familiar_name; }
 
-//    public void setIsActive(String str) { is_active = str; }
-    //@JsonProperty
-    //@XmlElement
+    public void setIsActive(String str) { is_active = str; }
+
     public String getIsActive() { return is_active; }
 
     public void setCompanyName(String str) { company_name = str; }
 
     public String getCompanyName() { return company_name; }
 
-//    public void setFirstName(String str) { first_name = str; }
-    //@JsonProperty
-    //@XmlElement
+    public void setFirstName(String str) { first_name = str; }
+
     public String getFirstName() { return first_name; }
 
-//    public void setLastName(String str) { last_name = str; }
-    //@JsonProperty
-    //@XmlElement
+    public void setLastName(String str) { last_name = str; }
+
     public String getLastName() { return last_name; }
 
-    //@JsonProperty
-    //@XmlElement
     public String getAddr1() { return addr_1; }
 
-    //@JsonProperty
-    //@XmlElement
     public String getAddr2() { return addr_2; }
 
-    //@JsonProperty
-    //@XmlElement
     public String getCity() { return city; }
 
-    //@JsonProperty
-    //@XmlElement
     public String getState() { return state; }
 
-    //@JsonProperty
-    //@XmlElement
     public String getPostalCode() { return postal_code; }
 
-    //@JsonProperty
-    //@XmlElement
     public String getTelephoneNumber() { return telephone_number; }
 
 //    public void setSalutation(String str) { salutation = str; }
-    //@JsonProperty
-    //@XmlElement
+
     public String getSalutation() { return salutation; }
 
 //    public void setAltTelephoneNumber(String str) { alt_telephone_number = str; }
-    //@JsonProperty
-    //@XmlElement
+
     public String getAltTelephoneNumber() { return alt_telephone_number; }
 
-    //@JsonProperty
-    //@XmlElement
     public String getEmailAddress() { return email_address; }
 
 //    public void setFullName(String str) { full_name = str; }
-    //@JsonProperty
-    //@XmlElement
+
     public String getFullName() { return full_name; }
 
 //    public void setAccountNumber(String str) { account_number = str; }
-    //@JsonProperty
-    //@XmlElement
+
     public String getAccountNumber() { return account_number; }
 
 //    public void setCreditLimit(String str) { credit_limit = str; }
-    //@JsonProperty
-    //@XmlElement
+
     public String getCreditLimit() { return credit_limit; }
 
-    //@JsonProperty
-    //@XmlElement
     public String getEmailPref() { return email_pref; }
 
-    //@JsonProperty
-    //@XmlElement
     public String getTelephonePref() { return telephone_pref; }
 
-    //@JsonProperty
-    //@XmlElement
     public String getComment() { return comment; }
 
 }
