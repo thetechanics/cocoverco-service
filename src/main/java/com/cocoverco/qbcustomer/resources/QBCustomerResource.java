@@ -47,14 +47,22 @@ public class QBCustomerResource {
                                 @FormParam("email_address") String email_address,
                                 @FormParam("email_pref") String email_pref,
                                 @FormParam("telephone_pref") String telephone_pref,
-                                @FormParam("comment") String comment){
+                                @FormParam("comment") String comment/*,
+                                String name,
+                                String is_active,
+                                String company_name,
+                                String salutation,
+                                String alt_telephone_number,
+                                String full_name,
+                                String account_number,
+                                String credit_limit*/){
 
         final Customer customer = new Customer();
 
-        customer.name = customer.getName();
-        customer.is_active = customer.getIsActive();
-        customer.company_name = customer.getCompanyName();
-        customer.salutation = customer.getSalutation();
+        //customer.name = customer.getName();
+        //customer.is_active = customer.getIsActive();
+        //customer.company_name = customer.getCompanyName();
+        //customer.salutation = customer.getSalutation();
         customer.first_name = first_name;
         customer.last_name = last_name;
         customer.addr_1 = addr_1;
@@ -63,11 +71,11 @@ public class QBCustomerResource {
         customer.state = state;
         customer.postal_code = postal_code;
         customer.telephone_number = telephone_number;
-        customer.alt_telephone_number = customer.getAltTelephoneNumber();
+        //customer.alt_telephone_number = customer.getAltTelephoneNumber();
         customer.email_address = email_address;
-        customer.full_name = customer.getFullName();
-        customer.account_number = customer.getAccountNumber();
-        customer.credit_limit = customer.getCreditLimit();
+        //customer.full_name = customer.getFullName();
+        //customer.account_number = customer.getAccountNumber();
+        //customer.credit_limit = customer.getCreditLimit();
         customer.email_pref = email_pref;
         customer.telephone_pref = telephone_pref;
         customer.comment = comment;
@@ -113,7 +121,7 @@ public class QBCustomerResource {
         //Return a new Saying object to the client with an incremented counter and the formatted String 'value' variable
         return new Saying(counter.incrementAndGet(), value);
 
-    //End sayHello method
+        //End sayHello method
     }
 
     /*To Do:  Implement Customer class
