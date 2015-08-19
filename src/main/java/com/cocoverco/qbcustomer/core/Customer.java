@@ -111,30 +111,71 @@ public class Customer {
                     String state,
                     String postal_code,
                     String telephone_number,
-                    String salutation,
+                    String email_address,
                     String email_pref,
                     String telephone_pref,
                     String comment) {
 
-        this.familiar_name =  first_name + " " + last_name;
-        this.is_active = "1";
-        this.first_name = first_name;
-        this.last_name= last_name;
-        /* commented out to make room for BillAddress class*/
-        this.addr_1 = addr_1;
-        this.addr_2 = addr_2;
-        this.city = city;
-        this.state = state;
-        this.postal_code = postal_code;
-        this.telephone_number = telephone_number;
-        this.salutation = salutation;
-        this.alt_telephone_number = "";
-        this.email_pref = email_pref;
-        this.full_name = familiar_name;
-        this.account_number = "";
-        this.credit_limit = "";
-        this.telephone_pref = telephone_pref;
-        this.comment = comment;
+        setFamiliarName("");
+
+        setIsActive("");
+
+        setCompanyName("");
+
+        setSalutation("");
+
+        setFirstName(first_name);
+
+        setLastName(last_name);
+
+        setAddr1(addr_1);
+
+        setAddr2(addr_2);
+
+        setCity(city);
+
+        setState(state);
+
+        setPostalCode(postal_code);
+
+        setTelephoneNumber(telephone_number);
+
+        setAltTelephoneNumber("");
+
+        setEmailAddress(email_address);
+
+        setEmailPref(email_pref);
+
+        setTelephonePref(telephone_pref);
+
+        setComment(comment);
+
+        setFullName("");
+
+        setAccountNumber("");
+
+        setCreditLimit("");
+
+        /* Commented out to test parameterized constructor */
+        //this.familiar_name =  first_name + " " + last_name;
+        //this.is_active = "1";
+        //this.first_name = first_name;
+        //this.last_name= last_name;
+        /* Commented out to test parameterized constructor */
+        //this.addr_1 = addr_1;
+        //this.addr_2 = addr_2;
+        //this.city = city;
+        //this.state = state;
+        //this.postal_code = postal_code;
+        //this.telephone_number = telephone_number;
+        //this.salutation = salutation;
+        //this.alt_telephone_number = "";
+        //this.email_pref = email_pref;
+        //this.full_name = familiar_name;
+        //this.account_number = "";
+        //this.credit_limit = "";
+        //this.telephone_pref = telephone_pref;
+        //this.comment = comment;
     }
 
     //TODO - Explore possible call optional value to avoid coded XML (e.g. Phone_Pref)
@@ -155,6 +196,11 @@ public class Customer {
     public String getCompanyName() { return company_name; }
 
     @XmlTransient
+    public void setSalutation(String str) { salutation = str; }
+
+    public String getSalutation() { return salutation; }
+
+    @XmlTransient
     public void setFirstName(String str) { first_name = str; }
 
     public String getFirstName() { return first_name; }
@@ -164,29 +210,43 @@ public class Customer {
 
     public String getLastName() { return last_name; }
 
-    /* Commented out to make room for BillAddress class*/
+    @XmlTransient
+    public void setAddr1(String str) { addr_1 = str; }
 
     public String getAddr1() { return addr_1; }
 
+    @XmlTransient
+    public void setAddr2(String str) { addr_2 = str; }
+
     public String getAddr2() { return addr_2; }
+
+    @XmlTransient
+    public void setCity(String str) { city = str; }
 
     public String getCity() { return city; }
 
+    @XmlTransient
+    public void setState(String str) { state = str; }
+
     public String getState() { return state; }
+
+    @XmlTransient
+    public void setPostalCode(String str) { postal_code = str; }
 
     public String getPostalCode() { return postal_code; }
 
-    public String getTelephoneNumber() { return telephone_number; }
-
     @XmlTransient
-    public void setSalutation(String str) { salutation = str; }
+    public void setTelephoneNumber(String str) { telephone_number = str; }
 
-    public String getSalutation() { return salutation; }
+    public String getTelephoneNumber() { return telephone_number; }
 
     @XmlTransient
     public void setAltTelephoneNumber(String str) { alt_telephone_number = str; }
 
     public String getAltTelephoneNumber() { return alt_telephone_number; }
+
+    @XmlTransient
+    public void setEmailAddress(String str) { email_address = str; }
 
     public String getEmailAddress() { return email_address; }
 
@@ -205,9 +265,18 @@ public class Customer {
 
     public String getCreditLimit() { return credit_limit; }
 
+    @XmlTransient
+    public void setEmailPref(String str) { email_pref = str; }
+
     public String getEmailPref() { return email_pref; }
 
+    @XmlTransient
+    public void setTelephonePref(String str) { telephone_pref = str; }
+
     public String getTelephonePref() { return telephone_pref; }
+
+    @XmlTransient
+    public void setComment(String str) { comment = str; }
 
     public String getComment() { return comment; }
 
