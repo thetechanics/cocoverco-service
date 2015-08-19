@@ -65,8 +65,14 @@ public class QBCustomerResource {
         //customer.salutation = customer.getSalutation();
         customer.first_name = first_name;
         customer.last_name = last_name;
+        /*customer.billAddress.addr1 = addr_1;
+        customer.billAddress.addr2 = addr_2;
+        customer.billAddress.city = city;
+        customer.billAddress.state = state;
+        customer.billAddress.postal_code = postal_code;*/
+        /* Commented out to make room for BillAddress class*/
         customer.addr_1 = addr_1;
-        customer.addr_2 = addr_2;
+         customer.addr_2 = addr_2;
         customer.city = city;
         customer.state = state;
         customer.postal_code = postal_code;

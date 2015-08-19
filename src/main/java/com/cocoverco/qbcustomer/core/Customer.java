@@ -1,13 +1,17 @@
 package com.cocoverco.qbcustomer.core;
 
+import com.cocoverco.qbcustomer.BillAddress;
 import com.fasterxml.jackson.annotation.JsonProperty;
 //import com.sun.xml.internal.bind.v2.TODO;
 import org.hibernate.validator.constraints.Length;
 
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "QBXML")
 public class Customer {
 
@@ -29,6 +33,9 @@ public class Customer {
 
     @XmlElement (name = "LastName", required = true)
     public String last_name;
+
+    /*@XmlElement (name = "BillAddress", required = true, nillable = true)
+    BillAddress billAddress;*/
 
     @XmlElement (name = "Addr1", required = true)
     public String addr_1;
@@ -69,12 +76,14 @@ public class Customer {
     @XmlElement (name = "PhonePref", required = true, nillable = true)
     public String telephone_pref;
 
-    @XmlElement (name = "Comment", required = true, nillable = true)
+    @XmlElement (name = "Comment", nillable = true)
     public String comment;
 
     public Customer() {
 
         // Jackson deserialization
+
+        /*billAddress = new BillAddress();*/
 
         setFamiliarName("");
 
@@ -111,6 +120,7 @@ public class Customer {
         this.is_active = "1";
         this.first_name = first_name;
         this.last_name= last_name;
+        /* commented out to make room for BillAddress class*/
         this.addr_1 = addr_1;
         this.addr_2 = addr_2;
         this.city = city;
@@ -153,6 +163,8 @@ public class Customer {
     public void setLastName(String str) { last_name = str; }
 
     public String getLastName() { return last_name; }
+
+    /* Commented out to make room for BillAddress class*/
 
     public String getAddr1() { return addr_1; }
 
