@@ -1,5 +1,6 @@
 package com.cocoverco.qbcustomer.resources;
 
+import com.cocoverco.qbcustomer.BillAddress;
 import com.cocoverco.qbcustomer.core.Saying;
 import com.cocoverco.qbcustomer.core.Customer;
 import com.google.common.base.Optional;
@@ -46,24 +47,18 @@ public class QBCustomerResource {
                                 @FormParam("telephone_number") String telephone_number,
                                 @FormParam("email_address") String email_address,
                                 @FormParam("contact_pref") String contact_pref,
-                                @FormParam("comment") String comment/*,
-                                String name,
-                                String is_active,
-                                String company_name,
-                                String salutation,
-                                String alt_telephone_number,
-                                String full_name,
-                                String account_number,
-                                String credit_limit*/){
+                                @FormParam("comment") String comment){
+
+        final BillAddress billAddress = new BillAddress(addr_1,
+                addr_2,
+                city,
+                state,
+                postal_code);
 
 
         final Customer customer = new Customer(first_name,
                 last_name,
-                addr_1,
-                addr_2,
-                city,
-                state,
-                postal_code,
+                billAddress,
                 telephone_number,
                 email_address,
                 contact_pref,

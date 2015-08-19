@@ -45,11 +45,7 @@
 package com.cocoverco.qbcustomer;
 
 import java.math.BigDecimal;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
@@ -79,7 +75,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "USAddress", propOrder = {
+@XmlType(name = "BillAddress", propOrder = {
         "addr1",
         "addr2",
         "city",
@@ -88,24 +84,39 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 })
 public class BillAddress {
 
-    @XmlElement(required = true)
+    @XmlElement(name = "Addr1", required = true)
     protected String addr1;
 
-    @XmlElement(required = true)
+    @XmlElement(name = "Addr2", required = true, nillable = true)
     protected String addr2;
 
-    @XmlElement(required = true)
+    @XmlElement(name = "City", required = true)
     protected String city;
 
-    @XmlElement(required = true)
+    @XmlElement(name = "State", required = true)
     protected String state;
 
-    @XmlElement(required = true)
-    protected BigDecimal postal_code;
+    @XmlElement(name = "PostalCode", required = true)
+    protected String postal_code;
 
 /*    @XmlAttribute
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String country;*/
+
+    public BillAddress(String addr1,
+                       String addr2,
+                       String city,
+                       String state,
+                       String postal_code) {
+
+        setAddr1(addr1);
+        setAddr2(addr2);
+        setCity(city);
+        setState(state);
+        setPostalCode(postal_code);
+
+    }
+
 
 
     /**
@@ -128,6 +139,7 @@ public class BillAddress {
      *     {@link String }
      *
      */
+    @XmlTransient
     public void setAddr1(String value) {
         this.addr1 = value;
     }
@@ -152,6 +164,7 @@ public class BillAddress {
      *     {@link String }
      *
      */
+    @XmlTransient
     public void setAddr2(String value) {
         this.addr2 = value;
     }
@@ -176,6 +189,7 @@ public class BillAddress {
      *     {@link String }
      *
      */
+    @XmlTransient
     public void setCity(String value) {
         this.city = value;
     }
@@ -200,6 +214,7 @@ public class BillAddress {
      *     {@link String }
      *
      */
+    @XmlTransient
     public void setState(String value) {
         this.state = value;
     }
@@ -212,7 +227,7 @@ public class BillAddress {
      *     {@link java.math.BigDecimal }
      *
      */
-    public BigDecimal getPostalCode() {
+    public String getPostalCode() {
         return postal_code;
     }
 
@@ -224,7 +239,8 @@ public class BillAddress {
      *     {@link java.math.BigDecimal }
      *
      */
-    public void setZip(BigDecimal value) {
+    @XmlTransient
+    public void setPostalCode(String value) {
         this.postal_code = value;
     }
 
@@ -252,7 +268,8 @@ public class BillAddress {
      *     {@link String }
      *
      */
-/*    public void setCountry(String value) {
+    /*@XmlTransient
+    public void setCountry(String value) {
         this.country = value;
     }*/
 

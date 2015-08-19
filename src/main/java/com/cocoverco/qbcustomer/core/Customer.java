@@ -2,7 +2,6 @@ package com.cocoverco.qbcustomer.core;
 
 import com.cocoverco.qbcustomer.BillAddress;
 import com.fasterxml.jackson.annotation.JsonProperty;
-//import com.sun.xml.internal.bind.v2.TODO;
 import org.hibernate.validator.constraints.Length;
 
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -10,6 +9,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,23 +36,8 @@ public class Customer {
     @XmlElement (name = "LastName", required = true)
     public String last_name;
 
-    /*@XmlElement (name = "BillAddress", required = true, nillable = true)
-    BillAddress billAddress;*/
-
-    @XmlElement (name = "Addr1", required = true)
-    public String addr_1;
-
-    @XmlElement (name = "Addr2", required = true, nillable = true)
-    public String addr_2;
-
-    @XmlElement (name = "City", required = true)
-    public String city;
-
-    @XmlElement (name = "State", required = true)
-    public String state;
-
-    @XmlElement (name = "PostalCode", required = true)
-    public String postal_code;
+    @XmlElement (name = "BillAddress", required = true, nillable = true)
+    public BillAddress customer_bill_address;
 
     @XmlElement (name = "Phone", required = true, nillable = true)
     public String telephone_number;
@@ -79,11 +64,10 @@ public class Customer {
     public String comment;
 
 
+
     public Customer() {
 
         // Jackson deserialization
-
-        /*billAddress = new BillAddress();*/
 
         setFamiliarName("");
 
@@ -105,15 +89,13 @@ public class Customer {
 
     public Customer(String first_name,
                     String last_name,
-                    String addr_1,
-                    String addr_2,
-                    String city,
-                    String state,
-                    String postal_code,
+                    BillAddress bill_address,
                     String telephone_number,
                     String email_address,
                     String contact_pref,
                     String comment) {
+
+        setCustomerBillAddress(bill_address);
 
         setFamiliarName("");
 
@@ -127,15 +109,7 @@ public class Customer {
 
         setLastName(last_name);
 
-        setAddr1(addr_1);
-
-        setAddr2(addr_2);
-
-        setCity(city);
-
-        setState(state);
-
-        setPostalCode(postal_code);
+        setCustomerBillAddress(bill_address);
 
         setTelephoneNumber(telephone_number);
 
@@ -144,8 +118,6 @@ public class Customer {
         setEmailAddress(email_address);
 
         setContactPref(contact_pref);
-
-        //setTelephonePref(telephone_pref);
 
         setComment(comment);
 
@@ -193,31 +165,6 @@ public class Customer {
     public String getLastName() { return this.last_name; }
 
     @XmlTransient
-    public void setAddr1(String value) { this.addr_1 = setEmptyString(value); }
-
-    public String getAddr1() { return this.addr_1; }
-
-    @XmlTransient
-    public void setAddr2(String value) { this.addr_2 = setEmptyString(value); }
-
-    public String getAddr2() { return this.addr_2; }
-
-    @XmlTransient
-    public void setCity(String value) { this.city = setEmptyString(value); }
-
-    public String getCity() { return this.city; }
-
-    @XmlTransient
-    public void setState(String value) { this.state = setEmptyString(value); }
-
-    public String getState() { return this.state; }
-
-    @XmlTransient
-    public void setPostalCode(String value) { this.postal_code = setEmptyString(value); }
-
-    public String getPostalCode() { return this.postal_code; }
-
-    @XmlTransient
     public void setTelephoneNumber(String value) { this.telephone_number = setEmptyString(value); }
 
     public String getTelephoneNumber() { return this.telephone_number; }
@@ -247,7 +194,6 @@ public class Customer {
 
     public String getCreditLimit() { return this.credit_limit; }
 
-    //TODO Check why setEmptyString does not work for email_pref and telephone_pref
     @XmlTransient
     public void setContactPref(String value) { this.contact_pref = setEmptyString(value); }
 
@@ -257,6 +203,10 @@ public class Customer {
     public void setComment(String value) { this.comment = setEmptyString(value); }
 
     public String getComment() { return this.comment; }
+
+    public void setCustomerBillAddress(BillAddress value) { this.customer_bill_address = value; }
+
+    public BillAddress getCustomerBillAddress() { return this.customer_bill_address; }
 
     private String setEmptyString(String value) {
 
