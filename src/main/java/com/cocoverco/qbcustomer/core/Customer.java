@@ -81,7 +81,7 @@ public class Customer {
 
         setCompanyName("");
 
-//        setSalutation("");
+        setSalutation("");
 
         setAltTelephoneNumber("");
 
@@ -126,7 +126,7 @@ public class Customer {
         this.comment = comment;
     }
 
-    //TODO:  Attributes and attribute setters are both showing up in the XML
+
     @XmlTransient
     public void setFamiliarName(String str) { familiar_name = str; }
 
@@ -164,7 +164,8 @@ public class Customer {
 
     public String getTelephoneNumber() { return telephone_number; }
 
-//    public void setSalutation(String str) { salutation = str; }
+    @XmlTransient
+    public void setSalutation(String str) { salutation = str; }
 
     public String getSalutation() { return salutation; }
 
