@@ -45,8 +45,7 @@ public class QBCustomerResource {
                                 @FormParam("postal_code") String postal_code,
                                 @FormParam("telephone_number") String telephone_number,
                                 @FormParam("email_address") String email_address,
-                                @FormParam("email_pref") String email_pref,
-                                @FormParam("telephone_pref") String telephone_pref,
+                                @FormParam("contact_pref") String contact_pref,
                                 @FormParam("comment") String comment/*,
                                 String name,
                                 String is_active,
@@ -56,9 +55,6 @@ public class QBCustomerResource {
                                 String full_name,
                                 String account_number,
                                 String credit_limit*/){
-
-        /* Commented out to test parameterized Customer constructor */
-        //final Customer customer = new Customer();
 
 
         final Customer customer = new Customer(first_name,
@@ -70,39 +66,8 @@ public class QBCustomerResource {
                 postal_code,
                 telephone_number,
                 email_address,
-                email_pref,
-                telephone_pref,
+                contact_pref,
                 comment);
-
-        //customer.name = customer.getName();
-        //customer.is_active = customer.getIsActive();
-        //customer.company_name = customer.getCompanyName();
-        //customer.salutation = customer.getSalutation();
-        /*Commented out to test parmameterized constructor */
-        //customer.first_name = first_name;
-        //customer.last_name = last_name;
-        /*customer.billAddress.addr1 = addr_1;
-        customer.billAddress.addr2 = addr_2;
-        customer.billAddress.city = city;
-        customer.billAddress.state = state;
-        customer.billAddress.postal_code = postal_code;*/
-        /*Commented out to test parmameterized constructor */
-        //customer.addr_1 = addr_1;
-        //customer.addr_2 = addr_2;
-        //customer.city = city;
-        //customer.state = state;
-        //customer.postal_code = postal_code;
-        //customer.telephone_number = telephone_number;
-        //customer.alt_telephone_number = customer.getAltTelephoneNumber();
-        /*Commented out to test parmameterized constructor */
-        //customer.email_address = email_address;
-        //customer.full_name = customer.getFullName();
-        //customer.account_number = customer.getAccountNumber();
-        //customer.credit_limit = customer.getCreditLimit();
-        /*Commented out to test parmameterized constructor */
-        //customer.email_pref = email_pref;
-        //customer.telephone_pref = telephone_pref;
-        //customer.comment = comment;
 
         return customer;
 

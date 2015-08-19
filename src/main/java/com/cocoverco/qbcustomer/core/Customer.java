@@ -10,6 +10,8 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import java.util.ArrayList;
+import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "QBXML")
@@ -70,14 +72,12 @@ public class Customer {
     @XmlElement (name = "CreditLimit", required = true, nillable = true)
     public String credit_limit;
 
-    @XmlElement (name = "EmailPref", required = true, nillable = true)
-    public String email_pref;
-
-    @XmlElement (name = "PhonePref", required = true, nillable = true)
-    public String telephone_pref;
+    @XmlElement (name = "ContactPref", required = true, nillable = true)
+    public String contact_pref;
 
     @XmlElement (name = "Comment", nillable = true)
     public String comment;
+
 
     public Customer() {
 
@@ -112,8 +112,7 @@ public class Customer {
                     String postal_code,
                     String telephone_number,
                     String email_address,
-                    String email_pref,
-                    String telephone_pref,
+                    String contact_pref,
                     String comment) {
 
         setFamiliarName("");
@@ -144,9 +143,9 @@ public class Customer {
 
         setEmailAddress(email_address);
 
-        setEmailPref(email_pref);
+        setContactPref(contact_pref);
 
-        setTelephonePref(telephone_pref);
+        //setTelephonePref(telephone_pref);
 
         setComment(comment);
 
@@ -156,125 +155,115 @@ public class Customer {
 
         setCreditLimit("");
 
+        //TODO - Put empty form values in array, iterate through to set variables to ""
+
+
     }
 
     //TODO - Explore possible call to optional value to avoid coded XML (e.g. Phone_Pref)
 
     @XmlTransient
-    public void setFamiliarName(String value) { familiar_name = value; }
+    public void setFamiliarName(String value) { this.familiar_name = setEmptyString(value); }
 
-    public String getFamiliarName() { return familiar_name; }
-
-    @XmlTransient
-    public void setIsActive(String value) { is_active = value; }
-
-    public String getIsActive() { return is_active; }
+    public String getFamiliarName() { return this.familiar_name; }
 
     @XmlTransient
-    public void setCompanyName(String value) { company_name = value; }
+    public void setIsActive(String value) { this.is_active = setEmptyString(value); }
 
-    public String getCompanyName() { return company_name; }
-
-    @XmlTransient
-    public void setSalutation(String value) { salutation = value; }
-
-    public String getSalutation() { return salutation; }
+    public String getIsActive() { return this.is_active; }
 
     @XmlTransient
-    public void setFirstName(String value) { first_name = value; }
+    public void setCompanyName(String value) { this.company_name = setEmptyString(value); }
 
-    public String getFirstName() { return first_name; }
-
-    @XmlTransient
-    public void setLastName(String value) { last_name = value; }
-
-    public String getLastName() { return last_name; }
+    public String getCompanyName() { return this.company_name; }
 
     @XmlTransient
-    public void setAddr1(String value) { addr_1 = value; }
+    public void setSalutation(String value) { this.salutation = setEmptyString(value); }
 
-    public String getAddr1() { return addr_1; }
-
-    @XmlTransient
-    public void setAddr2(String value) { addr_2 = value; }
-
-    public String getAddr2() { return addr_2; }
+    public String getSalutation() { return this.salutation; }
 
     @XmlTransient
-    public void setCity(String value) { city = value; }
+    public void setFirstName(String value) { this.first_name = setEmptyString(value); }
 
-    public String getCity() { return city; }
-
-    @XmlTransient
-    public void setState(String value) { state = value; }
-
-    public String getState() { return state; }
+    public String getFirstName() { return this.first_name; }
 
     @XmlTransient
-    public void setPostalCode(String value) { postal_code = value; }
+    public void setLastName(String value) { this.last_name = setEmptyString(value); }
 
-    public String getPostalCode() { return postal_code; }
-
-    @XmlTransient
-    public void setTelephoneNumber(String value) { telephone_number = value; }
-
-    public String getTelephoneNumber() { return telephone_number; }
+    public String getLastName() { return this.last_name; }
 
     @XmlTransient
-    public void setAltTelephoneNumber(String value) {
-        //If no value was provided, make the value empty
-        /*if(value.equals("") || value.equals(null))
-                alt_telephone_number = "";
-         else {
-            alt_telephone_number = value;
-        }*/
+    public void setAddr1(String value) { this.addr_1 = setEmptyString(value); }
 
-        alt_telephone_number = setEmptyString(value);
-    }
+    public String getAddr1() { return this.addr_1; }
+
+    @XmlTransient
+    public void setAddr2(String value) { this.addr_2 = setEmptyString(value); }
+
+    public String getAddr2() { return this.addr_2; }
+
+    @XmlTransient
+    public void setCity(String value) { this.city = setEmptyString(value); }
+
+    public String getCity() { return this.city; }
+
+    @XmlTransient
+    public void setState(String value) { this.state = setEmptyString(value); }
+
+    public String getState() { return this.state; }
+
+    @XmlTransient
+    public void setPostalCode(String value) { this.postal_code = setEmptyString(value); }
+
+    public String getPostalCode() { return this.postal_code; }
+
+    @XmlTransient
+    public void setTelephoneNumber(String value) { this.telephone_number = setEmptyString(value); }
+
+    public String getTelephoneNumber() { return this.telephone_number; }
+
+    @XmlTransient
+    public void setAltTelephoneNumber(String value) { this.alt_telephone_number = setEmptyString(value); }
 
     public String getAltTelephoneNumber() { return this.alt_telephone_number; }
 
     @XmlTransient
-    public void setEmailAddress(String value) { email_address = value; }
+    public void setEmailAddress(String value) { this.email_address = setEmptyString(value); }
 
-    public String getEmailAddress() { return email_address; }
-
-    @XmlTransient
-    public void setFullName(String value) { full_name = value; }
-
-    public String getFullName() { return full_name; }
+    public String getEmailAddress() { return this.email_address; }
 
     @XmlTransient
-    public void setAccountNumber(String value) { account_number = value; }
+    public void setFullName(String value) { this.full_name = setEmptyString(value); }
 
-    public String getAccountNumber() { return account_number; }
-
-    @XmlTransient
-    public void setCreditLimit(String value) { credit_limit = value; }
-
-    public String getCreditLimit() { return credit_limit; }
+    public String getFullName() { return this.full_name; }
 
     @XmlTransient
-    public void setEmailPref(String value) { email_pref = value; }
+    public void setAccountNumber(String value) { this.account_number = setEmptyString(value); }
 
-    public String getEmailPref() { return email_pref; }
-
-    @XmlTransient
-    public void setTelephonePref(String value) { telephone_pref = value; }
-
-    public String getTelephonePref() { return telephone_pref; }
+    public String getAccountNumber() { return this.account_number; }
 
     @XmlTransient
-    public void setComment(String value) { comment = value; }
+    public void setCreditLimit(String value) { this.credit_limit = setEmptyString(value); }
 
-    public String getComment() { return comment; }
+    public String getCreditLimit() { return this.credit_limit; }
+
+    //TODO Check why setEmptyString does not work for email_pref and telephone_pref
+    @XmlTransient
+    public void setContactPref(String value) { this.contact_pref = setEmptyString(value); }
+
+    public String getContactPref() { return this.contact_pref; }
+
+    @XmlTransient
+    public void setComment(String value) { this.comment = setEmptyString(value); }
+
+    public String getComment() { return this.comment; }
 
     private String setEmptyString(String value) {
 
         String str;
 
         //If no value was provided, make the value empty
-        if(value.equals("") || value.length() == 0 || value == null) {
+        if(value.equals("") || value.length() == 0 ) {
             str = "";
         } else {
             str = value;
