@@ -31,7 +31,7 @@ public class Customer {
     @XmlElement (name = "Addr1", required = true)
     public String addr_1;
 
-    @XmlElement (name = "Addr2", required = true)
+    @XmlElement (name = "Addr2", required = true, nillable = true)
     public String addr_2;
 
     @XmlElement (name = "City", required = true)
@@ -43,13 +43,13 @@ public class Customer {
     @XmlElement (name = "PostalCode", required = true)
     public String postal_code;
 
-    @XmlElement (name = "Phone", required = true)
+    @XmlElement (name = "Phone", required = true, nillable = true)
     public String telephone_number;
 
     @XmlElement (name = "AltPhone", required = true, nillable = true)
     public String alt_telephone_number;
 
-    @XmlElement (name = "Email", required = true)
+    @XmlElement (name = "Email", required = true, nillable = true)
     public String email_address;
 
     @XmlElement (name = "FullName", required = true, nillable = true)
@@ -61,13 +61,13 @@ public class Customer {
     @XmlElement (name = "CreditLimit", required = true, nillable = true)
     public String credit_limit;
 
-    @XmlElement (name = "EmailPref", required = true)
+    @XmlElement (name = "EmailPref", required = true, nillable = true)
     public String email_pref;
 
-    @XmlElement (name = "PhonePref", required = true)
+    @XmlElement (name = "PhonePref", required = true, nillable = true)
     public String telephone_pref;
 
-    @XmlElement (name = "Comment", required = true)
+    @XmlElement (name = "Comment", required = true, nillable = true)
     public String comment;
 
     public Customer() {
@@ -82,13 +82,13 @@ public class Customer {
 
 //        setSalutation("");
 
-//        setAltTelephoneNumber("");
+        setAltTelephoneNumber("");
 
-//        setFullName("");
+        setFullName("");
 
-//        setAccountNumber("");
+        setAccountNumber("");
 
-//        setCreditLimit("");
+        setCreditLimit("");
 
         }
 
@@ -161,21 +161,21 @@ public class Customer {
 
     public String getSalutation() { return salutation; }
 
-//    public void setAltTelephoneNumber(String str) { alt_telephone_number = str; }
+    public void setAltTelephoneNumber(String str) { alt_telephone_number = str; }
 
     public String getAltTelephoneNumber() { return alt_telephone_number; }
 
     public String getEmailAddress() { return email_address; }
 
-//    public void setFullName(String str) { full_name = str; }
+    public void setFullName(String str) { full_name = str; }
 
     public String getFullName() { return full_name; }
 
-//    public void setAccountNumber(String str) { account_number = str; }
+    public void setAccountNumber(String str) { account_number = str; }
 
     public String getAccountNumber() { return account_number; }
 
-//    public void setCreditLimit(String str) { credit_limit = str; }
+    public void setCreditLimit(String str) { credit_limit = str; }
 
     public String getCreditLimit() { return credit_limit; }
 
