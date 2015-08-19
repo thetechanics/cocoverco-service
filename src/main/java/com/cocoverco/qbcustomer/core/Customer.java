@@ -11,7 +11,7 @@ public class Customer {
 
     //The property order determines the XML field order
     @XmlElement (name = "Name", required = true, nillable = true)
-    public String name;
+    public String familiar_name;
 
     @XmlElement (name = "IsActive", required = true, nillable = true)
     public String is_active;
@@ -74,11 +74,11 @@ public class Customer {
 
         // Jackson deserialization
 
-        //setCompanyName("");
-
-        //setName("");
+        setFamiliarName("");
 
         //setIsActive("");
+
+        setCompanyName("");
 
         //setAltTelephoneNumber("");
 
@@ -103,7 +103,7 @@ public class Customer {
                     String telephone_pref,
                     String comment) {
 
-        this.name =  first_name + " " + last_name;
+        this.familiar_name =  first_name + " " + last_name;
         this.is_active = "1";
         this.first_name = first_name;
         this.last_name= last_name;
@@ -116,26 +116,24 @@ public class Customer {
         this.salutation = salutation;
         this.alt_telephone_number = "";
         this.email_pref = email_pref;
-        this.full_name = name;
+        this.full_name = familiar_name;
         this.account_number = "";
         this.credit_limit = "";
         this.telephone_pref = telephone_pref;
         this.comment = comment;
     }
 
-//    public void setName(String str) { name = str; }
-    //@JsonProperty
-    //@XmlElement
-    public String getName() { return name; }
+    public void setFamiliarName(String str) { familiar_name = str; }
+
+    public String getFamiliarName() { return familiar_name; }
 
 //    public void setIsActive(String str) { is_active = str; }
     //@JsonProperty
     //@XmlElement
     public String getIsActive() { return is_active; }
 
-//    public void setCompanyName(String str) { company_name = str; }
-    //@JsonProperty
-    //@XmlElement
+    public void setCompanyName(String str) { company_name = str; }
+
     public String getCompanyName() { return company_name; }
 
 //    public void setFirstName(String str) { first_name = str; }
