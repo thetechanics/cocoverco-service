@@ -10,64 +10,64 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Customer {
 
     //The property order determines the XML field order
-    //@XmlElement (name = "Name", required = true, nillable = true)
+    @XmlElement (name = "Name", required = true, nillable = true)
     public String name;
 
-    //@XmlElement (name = "IsActive", required = true, nillable = true)
+    @XmlElement (name = "IsActive", required = true, nillable = true)
     public String is_active;
 
-    //@XmlElement (name = "CompanyName", required = true, nillable = true)
+    @XmlElement (name = "CompanyName", required = true, nillable = true)
     public String company_name;
 
-    //@XmlElement (name = "Salutation", required = true, nillable = true)
+    @XmlElement (name = "Salutation", required = true, nillable = true)
     public String salutation;
 
-    @XmlElement //(name = "FirstName", required = true, nillable = true)
+    @XmlElement (name = "FirstName", required = true)
     public String first_name;
 
-    @XmlElement //(name = "LastName", required = true, nillable = true)
+    @XmlElement (name = "LastName", required = true)
     public String last_name;
 
-    @XmlElement //(name = "Addr1", required = true, nillable = true)
+    @XmlElement (name = "Addr1", required = true)
     public String addr_1;
 
-    @XmlElement //(name = "Addr2", required = true, nillable = true)
+    @XmlElement (name = "Addr2", required = true)
     public String addr_2;
 
-    @XmlElement //(name = "City", required = true, nillable = true)
+    @XmlElement (name = "City", required = true)
     public String city;
 
-    @XmlElement //(name = "State", required = true, nillable = true)
+    @XmlElement (name = "State", required = true)
     public String state;
 
-    @XmlElement //(name = "PostalCode", required = true, nillable = true)
+    @XmlElement (name = "PostalCode", required = true)
     public String postal_code;
 
-    @XmlElement //(name = "Phone", required = true, nillable = true)
+    @XmlElement (name = "Phone", required = true)
     public String telephone_number;
 
-    //@XmlElement (name = "AltPhone", required = true, nillable = true)
+    @XmlElement (name = "AltPhone", required = true, nillable = true)
     public String alt_telephone_number;
 
-    @XmlElement //(name = "Email", required = true, nillable = true)
+    @XmlElement (name = "Email", required = true)
     public String email_address;
 
-    //@XmlElement (name = "FullName", required = true, nillable = true)
+    @XmlElement (name = "FullName", required = true, nillable = true)
     public String full_name;
 
-    //@XmlElement (name = "AcctNumber", required = true, nillable = true)
+    @XmlElement (name = "AcctNumber", required = true, nillable = true)
     public String account_number;
 
-    //@XmlElement (name = "CreditLimit", required = true, nillable = true)
+    @XmlElement (name = "CreditLimit", required = true, nillable = true)
     public String credit_limit;
 
-    @XmlElement //(name = "EmailPref", required = true, nillable = true)
+    @XmlElement (name = "EmailPref", required = true)
     public String email_pref;
 
-    @XmlElement //(name = "PhonePref", required = true, nillable = true)
+    @XmlElement (name = "PhonePref", required = true)
     public String telephone_pref;
 
-    @XmlElement //(name = "Comment", required = true, nillable = true)
+    @XmlElement (name = "Comment", required = true)
     public String comment;
 
     public Customer() {
