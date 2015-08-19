@@ -221,9 +221,18 @@ public class Customer {
     public String getTelephoneNumber() { return telephone_number; }
 
     @XmlTransient
-    public void setAltTelephoneNumber(String value) { alt_telephone_number = value; }
+    public void setAltTelephoneNumber(String value) {
+        //If no value was provided, make the value empty
+        /*if(value.equals("") || value.equals(null))
+                alt_telephone_number = "";
+         else {
+            alt_telephone_number = value;
+        }*/
 
-    public String getAltTelephoneNumber() { return alt_telephone_number; }
+        alt_telephone_number = setEmptyString(value);
+    }
+
+    public String getAltTelephoneNumber() { return this.alt_telephone_number; }
 
     @XmlTransient
     public void setEmailAddress(String value) { email_address = value; }
@@ -259,5 +268,19 @@ public class Customer {
     public void setComment(String value) { comment = value; }
 
     public String getComment() { return comment; }
+
+    private String setEmptyString(String value) {
+
+        String str;
+
+        //If no value was provided, make the value empty
+        if(value.equals("") || value.length() == 0 || value == null) {
+            str = "";
+        } else {
+            str = value;
+        }
+
+        return str;
+    }
 
 }
