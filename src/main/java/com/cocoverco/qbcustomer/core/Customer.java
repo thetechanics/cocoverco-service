@@ -5,6 +5,7 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 @XmlRootElement(name = "QBXML")
 public class Customer {
@@ -125,22 +126,28 @@ public class Customer {
         this.comment = comment;
     }
 
+    //TODO:  Attributes and attribute setters are both showing up in the XML
+    @XmlTransient
     public void setFamiliarName(String str) { familiar_name = str; }
 
     public String getFamiliarName() { return familiar_name; }
 
+    @XmlTransient
     public void setIsActive(String str) { is_active = str; }
 
     public String getIsActive() { return is_active; }
 
+    @XmlTransient
     public void setCompanyName(String str) { company_name = str; }
 
     public String getCompanyName() { return company_name; }
 
+    @XmlTransient
     public void setFirstName(String str) { first_name = str; }
 
     public String getFirstName() { return first_name; }
 
+    @XmlTransient
     public void setLastName(String str) { last_name = str; }
 
     public String getLastName() { return last_name; }
@@ -161,20 +168,24 @@ public class Customer {
 
     public String getSalutation() { return salutation; }
 
+    @XmlTransient
     public void setAltTelephoneNumber(String str) { alt_telephone_number = str; }
 
     public String getAltTelephoneNumber() { return alt_telephone_number; }
 
     public String getEmailAddress() { return email_address; }
 
+    @XmlTransient
     public void setFullName(String str) { full_name = str; }
 
     public String getFullName() { return full_name; }
 
+    @XmlTransient
     public void setAccountNumber(String str) { account_number = str; }
 
     public String getAccountNumber() { return account_number; }
 
+    @XmlTransient
     public void setCreditLimit(String str) { credit_limit = str; }
 
     public String getCreditLimit() { return credit_limit; }
