@@ -156,127 +156,107 @@ public class Customer {
 
         setCreditLimit("");
 
-        /* Commented out to test parameterized constructor */
-        //this.familiar_name =  first_name + " " + last_name;
-        //this.is_active = "1";
-        //this.first_name = first_name;
-        //this.last_name= last_name;
-        /* Commented out to test parameterized constructor */
-        //this.addr_1 = addr_1;
-        //this.addr_2 = addr_2;
-        //this.city = city;
-        //this.state = state;
-        //this.postal_code = postal_code;
-        //this.telephone_number = telephone_number;
-        //this.salutation = salutation;
-        //this.alt_telephone_number = "";
-        //this.email_pref = email_pref;
-        //this.full_name = familiar_name;
-        //this.account_number = "";
-        //this.credit_limit = "";
-        //this.telephone_pref = telephone_pref;
-        //this.comment = comment;
     }
 
-    //TODO - Explore possible call optional value to avoid coded XML (e.g. Phone_Pref)
+    //TODO - Explore possible call to optional value to avoid coded XML (e.g. Phone_Pref)
 
     @XmlTransient
-    public void setFamiliarName(String str) { familiar_name = str; }
+    public void setFamiliarName(String value) { familiar_name = value; }
 
     public String getFamiliarName() { return familiar_name; }
 
     @XmlTransient
-    public void setIsActive(String str) { is_active = str; }
+    public void setIsActive(String value) { is_active = value; }
 
     public String getIsActive() { return is_active; }
 
     @XmlTransient
-    public void setCompanyName(String str) { company_name = str; }
+    public void setCompanyName(String value) { company_name = value; }
 
     public String getCompanyName() { return company_name; }
 
     @XmlTransient
-    public void setSalutation(String str) { salutation = str; }
+    public void setSalutation(String value) { salutation = value; }
 
     public String getSalutation() { return salutation; }
 
     @XmlTransient
-    public void setFirstName(String str) { first_name = str; }
+    public void setFirstName(String value) { first_name = value; }
 
     public String getFirstName() { return first_name; }
 
     @XmlTransient
-    public void setLastName(String str) { last_name = str; }
+    public void setLastName(String value) { last_name = value; }
 
     public String getLastName() { return last_name; }
 
     @XmlTransient
-    public void setAddr1(String str) { addr_1 = str; }
+    public void setAddr1(String value) { addr_1 = value; }
 
     public String getAddr1() { return addr_1; }
 
     @XmlTransient
-    public void setAddr2(String str) { addr_2 = str; }
+    public void setAddr2(String value) { addr_2 = value; }
 
     public String getAddr2() { return addr_2; }
 
     @XmlTransient
-    public void setCity(String str) { city = str; }
+    public void setCity(String value) { city = value; }
 
     public String getCity() { return city; }
 
     @XmlTransient
-    public void setState(String str) { state = str; }
+    public void setState(String value) { state = value; }
 
     public String getState() { return state; }
 
     @XmlTransient
-    public void setPostalCode(String str) { postal_code = str; }
+    public void setPostalCode(String value) { postal_code = value; }
 
     public String getPostalCode() { return postal_code; }
 
     @XmlTransient
-    public void setTelephoneNumber(String str) { telephone_number = str; }
+    public void setTelephoneNumber(String value) { telephone_number = value; }
 
     public String getTelephoneNumber() { return telephone_number; }
 
     @XmlTransient
-    public void setAltTelephoneNumber(String str) { alt_telephone_number = str; }
+    public void setAltTelephoneNumber(String value) { alt_telephone_number = value; }
 
     public String getAltTelephoneNumber() { return alt_telephone_number; }
 
     @XmlTransient
-    public void setEmailAddress(String str) { email_address = str; }
+    public void setEmailAddress(String value) { email_address = value; }
 
     public String getEmailAddress() { return email_address; }
 
     @XmlTransient
-    public void setFullName(String str) { full_name = str; }
+    public void setFullName(String value) { full_name = value; }
 
     public String getFullName() { return full_name; }
 
     @XmlTransient
-    public void setAccountNumber(String str) { account_number = str; }
+    public void setAccountNumber(String value) { account_number = value; }
 
     public String getAccountNumber() { return account_number; }
 
     @XmlTransient
-    public void setCreditLimit(String str) { credit_limit = str; }
+    public void setCreditLimit(String value) { credit_limit = value; }
 
     public String getCreditLimit() { return credit_limit; }
 
     @XmlTransient
-    public void setEmailPref(String str) { email_pref = str; }
+    public void setEmailPref(String value) { email_pref = value; }
 
     public String getEmailPref() { return email_pref; }
 
     @XmlTransient
-    public void setTelephonePref(String str) { telephone_pref = str; }
+    public void setTelephonePref(String value) { telephone_pref = value; }
 
     public String getTelephonePref() { return telephone_pref; }
 
     @XmlTransient
-    public void setComment(String str) { comment = str; }
+    public void setComment(String value) { comment = value; }
 
     public String getComment() { return comment; }
 
