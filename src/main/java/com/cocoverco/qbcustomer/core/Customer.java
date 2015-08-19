@@ -1,6 +1,7 @@
 package com.cocoverco.qbcustomer.core;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+//import com.sun.xml.internal.bind.v2.TODO;
 import org.hibernate.validator.constraints.Length;
 
 import javax.xml.bind.annotation.XmlElement;
@@ -126,6 +127,7 @@ public class Customer {
         this.comment = comment;
     }
 
+    //TODO - Explore possible call optional value to avoid coded XML (e.g. Phone_Pref)
 
     @XmlTransient
     public void setFamiliarName(String str) { familiar_name = str; }
