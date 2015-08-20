@@ -9,6 +9,8 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 //import java.math.BigDecimal;
 //import java.util.ArrayList;
 //import java.util.List;
@@ -63,6 +65,9 @@ public class Customer {
     @XmlElement (name = "Comment", nillable = true)
     public String comment;
 
+    @XmlElement (name = "CurrentDate", required = true, nillable = true)
+    public String current_date_string;
+
 
 
     public Customer() {
@@ -83,7 +88,7 @@ public class Customer {
 
         setAccountNumber("");
 
-        setCreditLimit("");
+        //setCreditLimit("");
 
         }
 
@@ -127,9 +132,11 @@ public class Customer {
 
         setCreditLimit("");
 
+        setCurrentDate();
+
         //TODO - Put empty form values in array, iterate through to set variables to ""
 
-    //End Custoomer(String, String, BillAddress, String, String, String, String)
+    //End Customer(String, String, BillAddress, String, String, String, String)
     }
 
     //TODO - Impmlement isEqual and hashTag methods
@@ -184,6 +191,11 @@ public class Customer {
     public String getLastName() { return this.last_name; }
 
     @XmlTransient
+    public void setCustomerBillAddress(BillAddress value) { this.customer_bill_address = value; }
+
+    public BillAddress getCustomerBillAddress() { return this.customer_bill_address; }
+
+    @XmlTransient
     public void setTelephoneNumber(String value) { this.telephone_number = setEmptyString(value); }
 
     public String getTelephoneNumber() { return this.telephone_number; }
@@ -223,9 +235,16 @@ public class Customer {
 
     public String getComment() { return this.comment; }
 
-    public void setCustomerBillAddress(BillAddress value) { this.customer_bill_address = value; }
+   // @XmlTransient
+    public void setCurrentDate() {
 
-    public BillAddress getCustomerBillAddress() { return this.customer_bill_address; }
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss");
+        Date dt = new Date();
+        this.current_date_string = dateFormat.format(dt);
+
+    }
+
+    public String getCurrentDate() { return this.current_date_string; }
 
     public String toString(){
 
