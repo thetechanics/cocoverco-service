@@ -44,10 +44,10 @@
 
 package com.cocoverco.qbcustomer;
 
-import java.math.BigDecimal;
+//import java.math.BigDecimal;
 import javax.xml.bind.annotation.*;
-import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+//import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
+//import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -115,6 +115,7 @@ public class BillAddress {
         setState(state);
         setPostalCode(postal_code);
 
+    //End BillAddress(String, String, String, String, String)
     }
 
 
@@ -263,7 +264,7 @@ public class BillAddress {
     /**
      * Sets the value of the country property.
      *
-     * @param value
+     * //@param value
      *     allowed object is
      *     {@link String }
      *
@@ -272,5 +273,15 @@ public class BillAddress {
     public void setCountry(String value) {
         this.country = value;
     }*/
+
+
+    public String toString(){
+
+        return new StringBuffer("Street 1: ").append(this.addr1)
+                .append(", Street 2: ").append(this.addr2)
+                .append(", City: ").append(this.city)
+                .append(", State: ").append(this.state)
+                .append(", Postal Code: ").append(this.postal_code).toString();
+    }
 
 }

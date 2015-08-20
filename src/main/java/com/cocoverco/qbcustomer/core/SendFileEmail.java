@@ -6,6 +6,7 @@ import java.util.*;
 import javax.mail.*;
 import javax.mail.internet.*;
 import javax.activation.*;
+import com.dumbster.smtp.SimpleSmtpServer;
 
 public class SendFileEmail
 {
@@ -58,7 +59,7 @@ public class SendFileEmail
     private String getFileName() { return filename; }
 
 
-    public void sendEmail()
+    public void sendEmailAttachment()
     {
 
 
@@ -125,6 +126,10 @@ public class SendFileEmail
             System.out.println("Sent message successfully....");
         }catch (MessagingException mex) {
             mex.printStackTrace();
+
+        //End catch exception
         }
+
+    //End sendEmailAttachment
     }
 }

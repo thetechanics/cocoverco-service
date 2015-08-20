@@ -3,8 +3,13 @@ package com.cocoverco.qbcustomer.resources;
 import com.cocoverco.qbcustomer.BillAddress;
 import com.cocoverco.qbcustomer.core.Saying;
 import com.cocoverco.qbcustomer.core.Customer;
+import com.cocoverco.qbcustomer.core.SendFileEmail;
 import com.google.common.base.Optional;
 import com.codahale.metrics.annotation.Timed;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 //import com.sun.xml.internal.bind.v2.TODO;
 
 import javax.ws.rs.*;
@@ -64,8 +69,39 @@ public class QBCustomerResource {
                 contact_pref,
                 comment);
 
+        /*SendFileEmail sendFileEmail = new SendFileEmail("rnoftz@northwestern.edu",
+                "rnoftz@comcast.net",
+                "Email with attachment",
+                "Test Email From QBCustomerResource",
+                "file.txt");
+
+        sendFileEmail.sendEmailAttachment();*/
+
+        try {
+
+            //String content = "This is the content to write into file";
+
+            File file = new File("cocoverco_test.txt");
+
+            // if file doesnt exists, then create it
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+
+            FileWriter fw = new FileWriter(file.getAbsoluteFile());
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(customer.toString());
+            bw.close();
+
+            System.out.println("Done");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         return customer;
 
+    //End getCustomer(String, String, String, String, String, String, String, String, String, String, String)
     }
 
 

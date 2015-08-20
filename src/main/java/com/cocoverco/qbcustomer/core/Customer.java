@@ -1,17 +1,17 @@
 package com.cocoverco.qbcustomer.core;
 
 import com.cocoverco.qbcustomer.BillAddress;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import org.hibernate.validator.constraints.Length;
+//import com.fasterxml.jackson.annotation.JsonProperty;
+//import org.hibernate.validator.constraints.Length;
 
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
+//import java.math.BigDecimal;
+//import java.util.ArrayList;
+//import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "QBXML")
@@ -129,10 +129,29 @@ public class Customer {
 
         //TODO - Put empty form values in array, iterate through to set variables to ""
 
-
+    //End Custoomer(String, String, BillAddress, String, String, String, String)
     }
 
+    //TODO - Impmlement isEqual and hashTag methods
+
+    //TODO - Complete XML structure
+
+    //TODO - Save XML as File
+
+    //TODO - Send Email with attachment
+
+    //TODO - Explore hosting server/database
+
+    //TODO - Save data to database
+
     //TODO - Explore possible call to optional value to avoid coded XML (e.g. Phone_Pref)
+
+    //TODO - Add unit tests
+
+    //TODO - Add JavaDocs
+
+    //TODO - Add JavaScript validation
+
 
     @XmlTransient
     public void setFamiliarName(String value) { this.familiar_name = setEmptyString(value); }
@@ -207,6 +226,15 @@ public class Customer {
     public void setCustomerBillAddress(BillAddress value) { this.customer_bill_address = value; }
 
     public BillAddress getCustomerBillAddress() { return this.customer_bill_address; }
+
+    public String toString(){
+
+        return new StringBuffer("First Name: ").append(this.first_name)
+                .append(", Last Name: ").append(this.last_name)
+                .append(", Bill Address: ").append(this.customer_bill_address.toString())
+                .append(", Telephone: ").append(this.telephone_number)
+                .append(", Email Address: ").append(this.email_address).toString();
+    }
 
     private String setEmptyString(String value) {
 
