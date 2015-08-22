@@ -1,6 +1,5 @@
 package com.cocoverco.qbcustomer.core;
 
-import com.cocoverco.qbcustomer.BillAddress;
 //import com.fasterxml.jackson.annotation.JsonProperty;
 //import org.hibernate.validator.constraints.Length;
 
@@ -9,8 +8,6 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 //import java.math.BigDecimal;
 //import java.util.ArrayList;
 //import java.util.List;
@@ -243,10 +240,10 @@ public class Customer {
 
         QBFormattedDate qbfd;
         qbfd = new QBFormattedDate();
-        System.out.println("qbfd.getDateString() " + qbfd.getDateString());
+        //System.out.println("qbfd.getDateString() " + qbfd.getDateString());
 
         this.current_date_string = qbfd.getDateString();
-        System.out.println(this.current_date_string);
+        //System.out.println(this.current_date_string);
 
 //        SimpleDateFormat dateFormat = new SimpleDateFormat("MMddyyyy_hhmm");
 //        Date dt = new Date();

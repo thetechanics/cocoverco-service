@@ -2,16 +2,12 @@ package com.cocoverco.qbcustomer.resources;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.concurrent.atomic.AtomicLong;
-import com.cocoverco.qbcustomer.BillAddress;
+import com.cocoverco.qbcustomer.core.BillAddress;
 import com.cocoverco.qbcustomer.core.QBFormattedDate;
 import com.cocoverco.qbcustomer.core.Saying;
 import com.cocoverco.qbcustomer.core.Customer;
-import com.cocoverco.qbcustomer.core.SendFileEmail;
 import com.google.common.base.Optional;
 import com.codahale.metrics.annotation.Timed;
 //import com.sun.xml.internal.bind.v2.TODO;
@@ -70,15 +66,8 @@ public class QBCustomerResource {
                 contact_pref,
                 comment);
 
-        /*SendFileEmail sendFileEmail = new SendFileEmail("rnoftz@northwestern.edu",
-                "rnoftz@comcast.net",
-                "Email with attachment",
-                "Test Email From QBCustomerResource",
-                "file.txt");
-
-        sendFileEmail.sendEmailAttachment();*/
-
-        try {
+        //Create file object with hardcoded string
+        /*try {
 
             String content = "This is the content to write into file";
 
@@ -95,12 +84,45 @@ public class QBCustomerResource {
             bw.write(content);
             bw.close();
 
-            System.out.println("Done");
+            //System.out.println("Done");
 
         } catch (IOException e) {
             e.printStackTrace();
+        }*/
+
+        //Create file object with XML format
+
+        QBFormattedDate qbfd = new QBFormattedDate("yyyyMMdd_hhmmss");
+
+
+        try {
+            javax.xml.bind.JAXBContext jaxbCtx = javax.xml.bind.JAXBContext.newInstance(Customer.class);
+//            javax.xml.bind.JAXBContext jaxbCtx = javax.xml.bind.JAXBContext.newInstance(customer.getClass().getPackage().getName());
+            //javax.xml.bond.DataTypeConverter
+            javax.xml.bind.Marshaller marshaller = jaxbCtx.createMarshaller();
+            marshaller.setProperty(javax.xml.bind.Marshaller.JAXB_ENCODING, "UTF-8"); //NOI18N
+            marshaller.setProperty(javax.xml.bind.Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+            //marshaller.marshal(customer, System.out);
+            OutputStream os = new FileOutputStream( "cocoverco_test_" + qbfd.getDateString() + ".txt" );
+            marshaller.marshal( customer, os );
+            os.close();
+
+        } catch (javax.xml.bind.JAXBException ex) {
+            // XXXTODO Handle exception
+            java.util.logging.Logger.getLogger("global").log(java.util.logging.Level.SEVERE, null, ex); //NOI18N
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-    //}
+
+        /*SendFileEmail sendFileEmail = new SendFileEmail("rnoftz@northwestern.edu",
+                "rnoftz@comcast.net",
+                "Email with attachment",
+                "Test Email From QBCustomerResource",
+                "file.txt");
+
+        sendFileEmail.sendEmailAttachment();*/
 
         return customer;
 

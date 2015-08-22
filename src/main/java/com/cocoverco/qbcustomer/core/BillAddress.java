@@ -42,7 +42,7 @@
 //
 
 
-package com.cocoverco.qbcustomer;
+package com.cocoverco.qbcustomer.core;
 
 //import java.math.BigDecimal;
 import javax.xml.bind.annotation.*;

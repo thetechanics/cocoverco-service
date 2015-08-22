@@ -6,14 +6,7 @@ package com.cocoverco.qbcustomer.core;
 //import customer.data.Address;
 //import customer.data.Customer;
 //...
-import com.cocoverco.qbcustomer.BillAddress;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.MediaType;
 
 public class TestCustomerXMLClient {
 /*    public static final Logger logger =
