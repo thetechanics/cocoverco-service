@@ -6,7 +6,7 @@ import java.util.*;
 import javax.mail.*;
 import javax.mail.internet.*;
 import javax.activation.*;
-import com.dumbster.smtp.SimpleSmtpServer;
+//import.com.dumbster.smtp.*;
 
 public class SendFileEmail
 {
