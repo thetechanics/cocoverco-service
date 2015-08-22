@@ -239,9 +239,11 @@ public class Customer {
    // @XmlTransient
     public void setCurrentDate() {
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss");
-        Date dt = new Date();
-        this.current_date_string = dateFormat.format(dt);
+        this.current_date_string = new QBFormatttedDate();
+
+//        SimpleDateFormat dateFormat = new SimpleDateFormat("MMddyyyy_hhmm");
+//        Date dt = new Date();
+//        this.current_date_string = dateFormat.format(dt);
 
     }
 
