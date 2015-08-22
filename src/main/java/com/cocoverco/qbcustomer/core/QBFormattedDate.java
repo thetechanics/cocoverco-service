@@ -19,30 +19,42 @@ public class QBFormattedDate {
         formatter = new SimpleDateFormat("MMddyyyy_hhmm");
         today = new Date();
         output = formatter.format(today);
-        System.out.println("QBFD Constructor " + output);
         setDateString(output);
 
     }
 
     public QBFormattedDate(Date dt){
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("MMddyyyy_hhmm");
-        setDateString(dateFormat.format(dt));
+        String output;
+        SimpleDateFormat formatter;
+
+        formatter = new SimpleDateFormat("MMddyyyy_hhmm");
+        output = formatter.format(dt);
+        setDateString(output);
 
     }
 
     public QBFormattedDate(String str) {
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat(str);
-        Date dt = new Date();
-        setDateString(dateFormat.format(dt));
+        Date today;
+        String output;
+        SimpleDateFormat formatter;
+
+        formatter = new SimpleDateFormat(str);
+        today = new Date();
+        output = formatter.format(today);
+        setDateString(output);
 
     }
 
     public QBFormattedDate (Date dt, String str){
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat(str);
-        setDateString(dateFormat.format(dt));
+        String output;
+        SimpleDateFormat formatter;
+
+        formatter = new SimpleDateFormat(str);
+        output = formatter.format(dt);
+        setDateString(output);
 
     }
 
