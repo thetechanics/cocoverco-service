@@ -1,15 +1,20 @@
 package com.cocoverco.qbcustomer.resources;
 
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.concurrent.atomic.AtomicLong;
 import com.cocoverco.qbcustomer.BillAddress;
+import com.cocoverco.qbcustomer.core.QBFormattedDate;
 import com.cocoverco.qbcustomer.core.Saying;
 import com.cocoverco.qbcustomer.core.Customer;
 import com.cocoverco.qbcustomer.core.SendFileEmail;
 import com.google.common.base.Optional;
 import com.codahale.metrics.annotation.Timed;
 //import com.sun.xml.internal.bind.v2.TODO;
-import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
-import java.util.concurrent.atomic.AtomicLong;
 //...
 
 //@Path determines path to call the service (e.g. http://localhost:8080/cocoverco-service)
@@ -73,13 +78,14 @@ public class QBCustomerResource {
 
         sendFileEmail.sendEmailAttachment();*/
 
-        /*try {
+        try {
 
-            //String content = "This is the content to write into file";
+            String content = "This is the content to write into file";
 
-            File file = new File("cocoverco_test.txt");
+            QBFormattedDate qbfd = new QBFormattedDate("yyyyMMdd_hhmmss");
+            File file = new File("cocoverco_test_" + qbfd.getDateString() +".txt");
 
-            // if file doesnt exists, then create it
+            // if file doesn't exists, then create it
             if (!file.exists()) {
                 file.createNewFile();
             }
@@ -93,7 +99,7 @@ public class QBCustomerResource {
 
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
+        }
     //}
 
         return customer;
