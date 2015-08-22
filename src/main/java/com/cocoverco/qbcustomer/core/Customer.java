@@ -239,7 +239,14 @@ public class Customer {
    // @XmlTransient
     public void setCurrentDate() {
 
-        this.current_date_string = new QBFormatttedDate();
+
+
+        QBFormattedDate qbfd;
+        qbfd = new QBFormattedDate();
+        System.out.println("qbfd.getDateString() " + qbfd.getDateString());
+
+        this.current_date_string = qbfd.getDateString();
+        System.out.println(this.current_date_string);
 
 //        SimpleDateFormat dateFormat = new SimpleDateFormat("MMddyyyy_hhmm");
 //        Date dt = new Date();
