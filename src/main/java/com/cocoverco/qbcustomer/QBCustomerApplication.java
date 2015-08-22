@@ -5,6 +5,7 @@ import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import com.cocoverco.qbcustomer.health.TemplateHealthCheck;
+//...
 
 //Application class with 'main' method.  Extends Application super class with Configuration parameter
 public class QBCustomerApplication extends Application<QBCustomerConfiguration> {

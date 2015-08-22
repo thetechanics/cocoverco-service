@@ -74,6 +74,7 @@ import javax.xml.bind.annotation.*;
  *
  *
  */
+//...
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "BillAddress", propOrder = {
         "addr1",

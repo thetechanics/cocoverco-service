@@ -14,6 +14,7 @@ import java.util.Date;
 //import java.math.BigDecimal;
 //import java.util.ArrayList;
 //import java.util.List;
+//...
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "QBXML")
@@ -136,7 +137,7 @@ public class Customer {
 
         //TODO - Put empty form values in array, iterate through to set variables to ""
 
-    //End Customer(String, String, BillAddress, String, String, String, String)...
+    //End Customer(String, String, BillAddress, String, String, String, String)
     }
 
     //TODO - Impmlement isEqual and hashTag methods

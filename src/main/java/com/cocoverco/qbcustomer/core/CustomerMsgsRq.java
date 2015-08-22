@@ -5,7 +5,7 @@ import javax.xml.bind.annotation.XmlElement;
 /**
  * Created by Russ on 8/21/2015.
  */
-
+//...
 public class CustomerMsgsRq {
 
     public CustomerMsgsRq(){}
