@@ -278,11 +278,20 @@ public class BillAddress {
 
     public String toString(){
 
-        return new StringBuffer("Street 1: ").append(this.addr1)
-                .append(", Street 2: ").append(this.addr2)
-                .append(", City: ").append(this.city)
-                .append(", State: ").append(this.state)
-                .append(", Postal Code: ").append(this.postal_code).toString();
+        String str;
+        str = "";
+
+        try {
+            str = new StringBuffer("Street 1: ").append(this.addr1)
+                    .append(", Street 2: ").append(this.addr2)
+                    .append(", City: ").append(this.city)
+                    .append(", State: ").append(this.state)
+                    .append(", Postal Code: ").append(this.postal_code).toString();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return str;
     }
 
 }

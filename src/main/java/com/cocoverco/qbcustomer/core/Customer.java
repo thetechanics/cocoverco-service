@@ -234,11 +234,20 @@ public class Customer {
 
     public String toString(){
 
-        return new StringBuffer("First Name: ").append(this.first_name)
-                .append(", Last Name: ").append(this.last_name)
-                .append(", Bill Address: ").append(this.customer_bill_address.toString())
-                .append(", Telephone: ").append(this.telephone_number)
-                .append(", Email Address: ").append(this.email_address).toString();
+        String str;
+        str = "";
+
+        try {
+            str = new StringBuffer("First Name: ").append(this.first_name)
+                    .append(", Last Name: ").append(this.last_name)
+                    .append(", Bill Address: ").append(this.customer_bill_address.toString())
+                    .append(", Telephone: ").append(this.telephone_number)
+                    .append(", Email Address: ").append(this.email_address).toString();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return str;
     }
 
     private String setEmptyString(String value) {

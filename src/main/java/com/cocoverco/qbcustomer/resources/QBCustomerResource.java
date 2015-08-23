@@ -10,7 +10,9 @@ import com.cocoverco.qbcustomer.core.Saying;
 import com.cocoverco.qbcustomer.core.Customer;
 import com.google.common.base.Optional;
 import com.codahale.metrics.annotation.Timed;
-//...
+
+
+//TODO - Add catch blocks
 
 //TODO - Impmlement isEqual and hashTag methods
 
@@ -31,11 +33,9 @@ import com.codahale.metrics.annotation.Timed;
 //TODO - Put empty form values in array, iterate through to set variables to ""
 
 
-//@Path determines path to call the service (e.g. http://localhost:8080/cocoverco-service)
+//@Path determines URL path to call the service (e.g. <host>/cocoverco-service)
 @Path("/cocoverco-service")
-//@Produces indicates that the media type returned by the server.  In this case JSON
-//!!! Working JSON resource return type:  @Produces(MediaType.APPLICATION_JSON)
-//Jersey resource class to define the behavior for a specific URI.  e.g. <Base URL>/cocoverco-service
+//Jersey resource class to define the behavior for a specific URI/Request type.  e.g. <Base URL>/cocoverco-service, GET
 public class QBCustomerResource {
     //Declare template variable as String
     private final String template;
@@ -54,9 +54,13 @@ public class QBCustomerResource {
         this.counter = new AtomicLong();
     }
 
-    //??? The presence of the parameter in the method signature determines the presence of the value in the XML
+    //@POST annotation determines that this method will be called for client POST requests
     @POST
+    //@Produces annotation determines the return format
     @Produces(MediaType.APPLICATION_XML)
+    //@Timed will generate a Jersey metric for the time spent in the method
+    @Timed
+    //@FormParam annotation captures the form values from the client request
     public Customer getCustomer(@FormParam("first_name") String first_name,
                                 @FormParam("last_name") String last_name,
                                 @FormParam("street_1") String addr_1,
@@ -69,13 +73,14 @@ public class QBCustomerResource {
                                 @FormParam("contact_pref") String contact_pref,
                                 @FormParam("comment") String comment){
 
+        //Declare and define BillAddress object
         final BillAddress billAddress = new BillAddress(addr_1,
                 addr_2,
                 city,
                 state,
                 postal_code);
 
-
+        //Declare and define Customer object (with BillAddress child)
         final Customer customer = new Customer(first_name,
                 last_name,
                 billAddress,
@@ -84,49 +89,20 @@ public class QBCustomerResource {
                 contact_pref,
                 comment);
 
-        //Create file object with hardcoded string
-        /*try {
-
-            String content = "This is the content to write into file";
-
-            QBFormattedDate qbfd = new QBFormattedDate("yyyyMMdd_hhmmss");
-            File file = new File("cocoverco_test_" + qbfd.getDateString() +".txt");
-
-            // if file doesn't exists, then create it
-            if (!file.exists()) {
-                file.createNewFile();
-            }
-
-            FileWriter fw = new FileWriter(file.getAbsoluteFile());
-            BufferedWriter bw = new BufferedWriter(fw);
-            bw.write(content);
-            bw.close();
-
-            //System.out.println("Done");
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
-
-        //Create file object with XML format
-
+        //Declare and define QBFormattedDate object
         QBFormattedDate qbfd = new QBFormattedDate("yyyyMMdd_hhmmss");
 
-
+        //Marshal Customer object and write to a file
         try {
             javax.xml.bind.JAXBContext jaxbCtx = javax.xml.bind.JAXBContext.newInstance(Customer.class);
-//            javax.xml.bind.JAXBContext jaxbCtx = javax.xml.bind.JAXBContext.newInstance(customer.getClass().getPackage().getName());
-            //javax.xml.bond.DataTypeConverter
             javax.xml.bind.Marshaller marshaller = jaxbCtx.createMarshaller();
             marshaller.setProperty(javax.xml.bind.Marshaller.JAXB_ENCODING, "UTF-8"); //NOI18N
             marshaller.setProperty(javax.xml.bind.Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-            //marshaller.marshal(customer, System.out);
             OutputStream os = new FileOutputStream( "cocoverco_test_" + qbfd.getDateString() + ".txt" );
             marshaller.marshal( customer, os );
             os.close();
 
         } catch (javax.xml.bind.JAXBException ex) {
-            // XXXTODO Handle exception
             java.util.logging.Logger.getLogger("global").log(java.util.logging.Level.SEVERE, null, ex); //NOI18N
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -134,6 +110,7 @@ public class QBCustomerResource {
             e.printStackTrace();
         }
 
+        //Create attach XML to email and send
         /*SendFileEmail sendFileEmail = new SendFileEmail("rnoftz@northwestern.edu",
                 "rnoftz@comcast.net",
                 "Email with attachment",
@@ -147,27 +124,27 @@ public class QBCustomerResource {
     //End getCustomer(String, String, String, String, String, String, String, String, String, String, String)
     }
 
-
-    //Use @POST for HTML form POST request (parameters not visible in URI)
-    //@POST determs what method is executed when a POST request is submitted to the service
-    //!!! Working JSON resource post type:  @POST
-    //Jersey @FormParam paramter annotation requires '@Consumes("application/x-www-form-urlencoded"'
-    @Consumes("application/x-www-form-urlencoded")
-    // Use @GET for HTML form GET requests (parameters visible in URI)
-    //@GET determines what method is executed when a GET request is submitted to the service
-    // @GET
+    /*
+    //Commenting out GET response - Throws exceptions fix as able
+    //??? Consumes necessary?
+    //@Consumes("application/x-www-form-urlencoded")
+    //@GET annotation determines that this method will be called for client GET requests
+    @GET
+    //@Produces indicates the media type returned by the method.  JSON is returned in the next line.
+    @Produces(MediaType.APPLICATION_JSON)
     //@Timed will generate a Jersey metric for the time spent in the method
     @Timed
     //The 'sayHello' method takes the 'first_name' parameter value from the client as well as an optional String parameter
     //@FormParam("first_name") captures the value of the 'first_name' parameter from the client POST request.
     //The incoming parameter is cast an an 'Optional' object, with a String constructor
-    public Saying sayHello(@FormParam("first_name") Optional<String> name,
+    //Jersey @FormParam annotation requires '@Consumes("application/x-www-form-urlencoded"'
+    public Saying sayHello(@FormParam("first_name") Optional<String> first_name,
                            @FormParam("last_name") Optional<String> last_name,
                            @FormParam("street_1") Optional<String> street_1,
                            @FormParam("street_2") Optional<String> street_2,
                            @FormParam("city") Optional<String> city,
                            @FormParam("state") Optional<String> state,
-                           @FormParam("postal_code") Optional<String> postal_code,
+                           @FormParam("postal_code") Optional<String> postal_code,                           @FormParam("telephone_number") Optional<String> telephone_number,
                            @FormParam("email_address") Optional<String> email_address,
                            @FormParam("email_pref") Optional<String> email_pref,
                            @FormParam("telephone_pref") Optional<String> telephone_pref,
@@ -177,21 +154,31 @@ public class QBCustomerResource {
         //??? - If parameter'name' is null, then use the defaultName parameter from the constructor ???
         //NOTE - To add field to the output, add a form parameter to the 'Saying' call (e.g. last_name)
         //add a String object (e.g. %s) to the template (e.g. cocoverco-service.yml) and an additional parameter to 'format' (e.g. last_name.or(""))
-        final String value = String.format(template,
-                name.or(defaultName),
-                last_name.or(""),
-                street_1.or(""));
+        String value;
+        value = "";
+
+        try {
+            value = String.format(template,
+                    first_name.or(defaultName),
+                    last_name.or(""),
+                    street_1.or(""),
+                    street_2.or(""),
+                    city.or(""),
+                    postal_code.or(""),
+                    email_address.or(""),
+                    telephone_number.or(""),
+                    comment.or("")
+            );
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         //Return a new Saying object to the client with an incremented counter and the formatted String 'value' variable
-        return new Saying(counter.incrementAndGet(), value);
+        return new Saying(counter.incrementAndGet(),value);
 
-        //End sayHello method
+    //End sayHello method
     }
-
-    /*To Do:  Implement Customer class
-    //Can we create a CustomerString class, with a global variable and the build the class members with a series of methods?
-    @POST
-    @Timed
-    public Customer toString(@QueryParam("first_name")), */
+    */
 
 //End QBCustomerResource class
 }

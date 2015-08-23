@@ -13,23 +13,32 @@ public class QBFormattedDate {
     public QBFormattedDate(){
 
         Date today;
-        String output;
+        String output = "";
         SimpleDateFormat formatter;
 
         formatter = new SimpleDateFormat("MMddyyyy_hhmm");
         today = new Date();
-        output = formatter.format(today);
+        try {
+            output = formatter.format(today);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         setDateString(output);
 
     }
 
     public QBFormattedDate(Date dt){
 
-        String output;
+        String output = "";
         SimpleDateFormat formatter;
 
+
         formatter = new SimpleDateFormat("MMddyyyy_hhmm");
-        output = formatter.format(dt);
+        try {
+            output = formatter.format(dt);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         setDateString(output);
 
     }
@@ -37,23 +46,32 @@ public class QBFormattedDate {
     public QBFormattedDate(String str) {
 
         Date today;
-        String output;
+        String output = "";
         SimpleDateFormat formatter;
 
         formatter = new SimpleDateFormat(str);
         today = new Date();
-        output = formatter.format(today);
+        try {
+            output = formatter.format(today);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         setDateString(output);
 
     }
 
     public QBFormattedDate (Date dt, String str){
 
-        String output;
+        String output = "";
         SimpleDateFormat formatter;
 
+
         formatter = new SimpleDateFormat(str);
-        output = formatter.format(dt);
+        try {
+            output = formatter.format(dt);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         setDateString(output);
 
     }
