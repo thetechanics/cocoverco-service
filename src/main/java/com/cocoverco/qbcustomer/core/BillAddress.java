@@ -129,7 +129,7 @@ public class BillAddress {
      *
      */
     String getAddr1() {
-        return addr1;
+        return this.addr1;
     }
 
     /**
@@ -154,7 +154,7 @@ public class BillAddress {
      *
      */
     public String getAddr2() {
-        return addr2;
+        return this.addr2;
     }
 
     /**
@@ -179,7 +179,7 @@ public class BillAddress {
      *
      */
     public String getCity() {
-        return city;
+        return this.city;
     }
 
     /**
@@ -204,7 +204,7 @@ public class BillAddress {
      *
      */
     public String getState() {
-        return state;
+        return this.state;
     }
 
     /**
@@ -229,7 +229,7 @@ public class BillAddress {
      *
      */
     public String getPostalCode() {
-        return postal_code;
+        return this.postal_code;
     }
 
     /**

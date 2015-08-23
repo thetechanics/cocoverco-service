@@ -12,10 +12,6 @@ import com.google.common.base.Optional;
 import com.codahale.metrics.annotation.Timed;
 
 
-//TODO - Add catch blocks
-
-//TODO - Impmlement isEqual and hashTag methods
-
 //TODO - Add JavaDocs
 
 //TODO - Complete XML structure
@@ -29,6 +25,8 @@ import com.codahale.metrics.annotation.Timed;
 //TODO - Save data to database
 
 //TODO - Improve JavaScript validation
+
+//TODO - Impmlement equal and hashCode methods
 
 //TODO - Put empty form values in array, iterate through to set variables to ""
 
@@ -179,6 +177,7 @@ public class QBCustomerResource {
 
     } //End sayHello method
     */
+
 
 
 } //End QBCustomerResource class

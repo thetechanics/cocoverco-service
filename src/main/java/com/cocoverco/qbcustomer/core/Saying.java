@@ -19,7 +19,7 @@ public class Saying {
     }
 
     @JsonProperty
-    long getId() {
+    public long getId() {
         return id;
     }
 
