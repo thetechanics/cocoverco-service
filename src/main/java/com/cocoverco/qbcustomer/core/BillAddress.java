@@ -41,15 +41,6 @@
 // Generated on: 2006.08.29 at 09:53:40 AM CEST 
 //
 
-
-package com.cocoverco.qbcustomer.core;
-
-//import java.math.BigDecimal;
-import javax.xml.bind.annotation.*;
-//import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
-//import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-
-
 /**
  * <p>Java class for USAddress complex type.
  *
@@ -74,7 +65,24 @@ import javax.xml.bind.annotation.*;
  *
  *
  */
-//...
+
+/* Modifications made for this specific implementation - Russ Noftz, 2015
+ * <pre>
+ * &lt;complexType name="BillAddress">
+ *   &lt;element name="addr1" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *   &lt;element name="addr2" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *   &lt;element name="city" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *   &lt;element name="state" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *   &lt;element name="postal_code" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ * &lt;/complexType>
+ * </pre>
+ */
+
+package com.cocoverco.qbcustomer.core;
+
+import javax.xml.bind.annotation.*;
+
+
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "BillAddress", propOrder = {
         "addr1",
@@ -100,11 +108,17 @@ public class BillAddress {
     @XmlElement(name = "PostalCode", required = true)
     private String postal_code;
 
-/*    @XmlAttribute
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    protected String country;*/
 
-    public BillAddress(String addr1,
+    /**
+     * Multiple parameter constructor.
+     *
+     * @param  addr1        A string representing the first part of the customer's street address
+     * @param  addr2        A string representing the second part of the customer's street address (as needed)
+     * @param  city         A string representing the customer's city
+     * @param  state        A string representing the customer's state
+     * @param  postal_code  A string representing the postal code
+     *
+     */    public BillAddress(String addr1,
                        String addr2,
                        String city,
                        String state,
@@ -119,13 +133,10 @@ public class BillAddress {
     }//End BillAddress(String, String, String, String, String) constructor
 
 
-
     /**
      * Gets the value of the addr1 property.
      *
-     * @return
-     *     possible object is
-     *     {@link String }
+     * @return  possible object is {@link String }
      *
      */
     String getAddr1() {
@@ -135,9 +146,7 @@ public class BillAddress {
     /**
      * Sets the value of the addr1 property.
      *
-     * @param value
-     *     allowed object is
-     *     {@link String }
+     * @param   value   allowed object is {@link String }
      *
      */
     @XmlTransient
@@ -148,9 +157,7 @@ public class BillAddress {
     /**
      * Gets the value of the addr2 property.
      *
-     * @return
-     *     possible object is
-     *     {@link String }
+     * @return  possible object is {@link String }
      *
      */
     public String getAddr2() {
@@ -160,9 +167,7 @@ public class BillAddress {
     /**
      * Sets the value of the addr2 property.
      *
-     * @param value
-     *     allowed object is
-     *     {@link String }
+     * @param   value   allowed object is {@link String }
      *
      */
     @XmlTransient
@@ -173,9 +178,7 @@ public class BillAddress {
     /**
      * Gets the value of the city property.
      *
-     * @return
-     *     possible object is
-     *     {@link String }
+     * @return  possible object is {@link String }
      *
      */
     public String getCity() {
@@ -185,9 +188,7 @@ public class BillAddress {
     /**
      * Sets the value of the city property.
      *
-     * @param value
-     *     allowed object is
-     *     {@link String }
+     * @param   value   allowed object is {@link String }
      *
      */
     @XmlTransient
@@ -198,9 +199,7 @@ public class BillAddress {
     /**
      * Gets the value of the state property.
      *
-     * @return
-     *     possible object is
-     *     {@link String }
+     * @return  possible object is {@link String }
      *
      */
     public String getState() {
@@ -210,9 +209,7 @@ public class BillAddress {
     /**
      * Sets the value of the state property.
      *
-     * @param value
-     *     allowed object is
-     *     {@link String }
+     * @param   value   allowed object is {@link String }
      *
      */
     @XmlTransient
@@ -223,9 +220,7 @@ public class BillAddress {
     /**
      * Gets the value of the postal_code property.
      *
-     * @return
-     *     possible object is
-     *     {@link java.math.BigDecimal }
+     * @return  possible object is {@link java.math.BigDecimal }
      *
      */
     public String getPostalCode() {
@@ -235,9 +230,7 @@ public class BillAddress {
     /**
      * Sets the value of the postal_code property.
      *
-     * @param value
-     *     allowed object is
-     *     {@link java.math.BigDecimal }
+     * @param   value   allowed object is {@link java.math.BigDecimal }
      *
      */
     @XmlTransient
@@ -246,35 +239,11 @@ public class BillAddress {
     }
 
     /**
-     * Gets the value of the country property.
+     * Returns the Customer object member variables and values.
      *
-     * @return
-     *     possible object is
-     *     {@link String }
-     *
+     * @return  String  The concatenated field names and values
+     * @throws  Exception   Prints a stack trace of the caught exception
      */
-/*    public String getCountry() {
-        if (country == null) {
-            return "US";
-        } else {
-            return country;
-        }
-    }*/
-
-    /**
-     * Sets the value of the country property.
-     *
-     * //@param value
-     *     allowed object is
-     *     {@link String }
-     *
-     */
-    /*@XmlTransient
-    void setCountry(String value) {
-        this.country = value;
-    }*/
-
-
     public String toString(){
 
         String str;
@@ -291,6 +260,6 @@ public class BillAddress {
         }
 
         return str;
-    }
+    }//End toString() method
 
-}
+}//End BillAddress class
