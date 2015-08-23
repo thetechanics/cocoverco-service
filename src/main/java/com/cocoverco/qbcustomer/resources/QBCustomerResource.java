@@ -52,7 +52,7 @@ public class QBCustomerResource {
         this.defaultName = defaultName;
         //Define this instance of the 'counter' variable as a new AtomicLong object with an initial value of zero
         this.counter = new AtomicLong();
-    }
+    }//End QBCustomerResource(String, String) constructor
 
     //@POST annotation determines that this method will be called for client POST requests
     @POST
@@ -121,8 +121,7 @@ public class QBCustomerResource {
 
         return customer;
 
-    //End getCustomer(String, String, String, String, String, String, String, String, String, String, String)
-    }
+    } //End getCustomer(String, String, String, String, String, String, String, String, String, String, String)
 
     /*
     //Commenting out GET response - Throws exceptions fix as able
@@ -144,16 +143,17 @@ public class QBCustomerResource {
                            @FormParam("street_2") Optional<String> street_2,
                            @FormParam("city") Optional<String> city,
                            @FormParam("state") Optional<String> state,
-                           @FormParam("postal_code") Optional<String> postal_code,                           @FormParam("telephone_number") Optional<String> telephone_number,
+                           @FormParam("postal_code") Optional<String> postal_code,
+                           @FormParam("telephone_number") Optional<String> telephone_number,
                            @FormParam("email_address") Optional<String> email_address,
                            @FormParam("email_pref") Optional<String> email_pref,
                            @FormParam("telephone_pref") Optional<String> telephone_pref,
                            @FormParam("comment") Optional<String> comment ) {
-//    public Saying sayHello(@QueryParam("first_name") Optional<String> name) {
         //Define the String variable 'value' using the 'template' format provided in the constructor
-        //??? - If parameter'name' is null, then use the defaultName parameter from the constructor ???
-        //NOTE - To add field to the output, add a form parameter to the 'Saying' call (e.g. last_name)
-        //add a String object (e.g. %s) to the template (e.g. cocoverco-service.yml) and an additional parameter to 'format' (e.g. last_name.or(""))
+        //NOTE - To add field to the output, ??? add a form parameter to the 'Saying' class (e.g. last_name) ???
+        //and add a String object (e.g. %s) to the template (e.g. cocoverco-service.yml)
+        //and an additional parameter to 'format' (e.g. last_name.or(""))
+
         String value;
         value = "";
 
@@ -176,9 +176,9 @@ public class QBCustomerResource {
         //Return a new Saying object to the client with an incremented counter and the formatted String 'value' variable
         return new Saying(counter.incrementAndGet(),value);
 
-    //End sayHello method
-    }
+
+    } //End sayHello method
     */
 
-//End QBCustomerResource class
-}
+
+} //End QBCustomerResource class

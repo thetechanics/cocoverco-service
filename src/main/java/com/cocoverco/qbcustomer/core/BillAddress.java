@@ -86,19 +86,19 @@ import javax.xml.bind.annotation.*;
 public class BillAddress {
 
     @XmlElement(name = "Addr1", nillable = true)
-    protected String addr1;
+    private String addr1;
 
     @XmlElement(name = "Addr2", nillable = true)
-    protected String addr2;
+    private String addr2;
 
     @XmlElement(name = "City", nillable = true)
-    protected String city;
+    private String city;
 
     @XmlElement(name = "State", nillable = true)
-    protected String state;
+    private String state;
 
     @XmlElement(name = "PostalCode", required = true)
-    protected String postal_code;
+    private String postal_code;
 
 /*    @XmlAttribute
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
@@ -116,8 +116,7 @@ public class BillAddress {
         setState(state);
         setPostalCode(postal_code);
 
-    //End BillAddress(String, String, String, String, String)
-    }
+    }//End BillAddress(String, String, String, String, String) constructor
 
 
 
@@ -129,7 +128,7 @@ public class BillAddress {
      *     {@link String }
      *
      */
-    public String getAddr1() {
+    String getAddr1() {
         return addr1;
     }
 
@@ -142,7 +141,7 @@ public class BillAddress {
      *
      */
     @XmlTransient
-    public void setAddr1(String value) {
+    void setAddr1(String value) {
         this.addr1 = value;
     }
 
@@ -167,7 +166,7 @@ public class BillAddress {
      *
      */
     @XmlTransient
-    public void setAddr2(String value) {
+    void setAddr2(String value) {
         this.addr2 = value;
     }
 
@@ -192,7 +191,7 @@ public class BillAddress {
      *
      */
     @XmlTransient
-    public void setCity(String value) {
+    void setCity(String value) {
         this.city = value;
     }
 
@@ -217,7 +216,7 @@ public class BillAddress {
      *
      */
     @XmlTransient
-    public void setState(String value) {
+    void setState(String value) {
         this.state = value;
     }
 
@@ -242,7 +241,7 @@ public class BillAddress {
      *
      */
     @XmlTransient
-    public void setPostalCode(String value) {
+    void setPostalCode(String value) {
         this.postal_code = value;
     }
 
@@ -271,7 +270,7 @@ public class BillAddress {
      *
      */
     /*@XmlTransient
-    public void setCountry(String value) {
+    void setCountry(String value) {
         this.country = value;
     }*/
 

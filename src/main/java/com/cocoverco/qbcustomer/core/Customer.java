@@ -1,72 +1,79 @@
 package com.cocoverco.qbcustomer.core;
 
-//import com.fasterxml.jackson.annotation.JsonProperty;
-//import org.hibernate.validator.constraints.Length;
-
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
-//import java.math.BigDecimal;
-//import java.util.ArrayList;
-//import java.util.List;
-//...
-
+import javax.xml.bind.annotation.*;
 
 
 @XmlAccessorType(XmlAccessType.FIELD)
+//@XmlType name defaults to root element "QBXML"
+@XmlType(name = "CustomerAdd", propOrder = {
+        "familiar_name",
+        "is_active",
+        "company_name",
+        "salutation",
+        "first_name",
+        "last_name",
+        "customer_bill_address",
+        "telephone_number",
+        "alt_telephone_number",
+        "email_address",
+        "full_name",
+        "account_number",
+        "credit_limit",
+        "contact_pref",
+        "comment",
+        "current_date_string"
+})
 @XmlRootElement(name = "QBXML")
 public class Customer {
 
     //The property order determines the XML field order
     @XmlElement (name = "Name", nillable = true)
-    public String familiar_name;
+    private String familiar_name;
 
     @XmlElement (name = "IsActive", nillable = true)
-    public String is_active;
+    private String is_active;
 
     @XmlElement (name = "CompanyName", nillable = true)
-    public String company_name;
+    private String company_name;
 
     @XmlElement (name = "Salutation", nillable = true)
-    public String salutation;
+    private String salutation;
 
     @XmlElement (name = "FirstName", required = true)
-    public String first_name;
+    private String first_name;
 
     @XmlElement (name = "LastName", required = true)
-    public String last_name;
+    private String last_name;
 
     @XmlElement (name = "BillAddress", required = true)
-    public BillAddress customer_bill_address;
+    private BillAddress customer_bill_address;
 
     @XmlElement (name = "Phone", nillable = true)
-    public String telephone_number;
+    private String telephone_number;
 
     @XmlElement (name = "AltPhone", nillable = true)
-    public String alt_telephone_number;
+    private String alt_telephone_number;
 
     @XmlElement (name = "Email", nillable = true)
-    public String email_address;
+    private String email_address;
 
     @XmlElement (name = "FullName", nillable = true)
-    public String full_name;
+    private String full_name;
 
     @XmlElement (name = "AcctNumber", nillable = true)
-    public String account_number;
+    private String account_number;
 
     @XmlElement (name = "CreditLimit", nillable = true)
-    public String credit_limit;
+    private String credit_limit;
 
     @XmlElement (name = "ContactPref", nillable = true)
-    public String contact_pref;
+    private String contact_pref;
 
     @XmlElement (name = "Comment", nillable = true)
-    public String comment;
+    private String comment;
 
     @XmlElement (name = "CurrentDate", required = true)
-    public String current_date_string;
+    private String current_date_string;
 
 
 
@@ -90,7 +97,7 @@ public class Customer {
 
         //setCreditLimit("");
 
-        }
+        }//End Customer() constructor
 
     public Customer(String first_name,
                     String last_name,
@@ -138,82 +145,82 @@ public class Customer {
     }
 
     @XmlTransient
-    public void setFamiliarName(String value) { this.familiar_name = setEmptyString(value); }
+    void setFamiliarName(String value) { this.familiar_name = setEmptyString(value); }
 
-    public String getFamiliarName() { return this.familiar_name; }
-
-    @XmlTransient
-    public void setIsActive(String value) { this.is_active = setEmptyString(value); }
-
-    public String getIsActive() { return this.is_active; }
+    String getFamiliarName() { return this.familiar_name; }
 
     @XmlTransient
-    public void setCompanyName(String value) { this.company_name = setEmptyString(value); }
+    void setIsActive(String value) { this.is_active = setEmptyString(value); }
 
-    public String getCompanyName() { return this.company_name; }
-
-    @XmlTransient
-    public void setSalutation(String value) { this.salutation = setEmptyString(value); }
-
-    public String getSalutation() { return this.salutation; }
+    String getIsActive() { return this.is_active; }
 
     @XmlTransient
-    public void setFirstName(String value) { this.first_name = setEmptyString(value); }
+    void setCompanyName(String value) { this.company_name = setEmptyString(value); }
 
-    public String getFirstName() { return this.first_name; }
-
-    @XmlTransient
-    public void setLastName(String value) { this.last_name = setEmptyString(value); }
-
-    public String getLastName() { return this.last_name; }
+    String getCompanyName() { return this.company_name; }
 
     @XmlTransient
-    public void setCustomerBillAddress(BillAddress value) { this.customer_bill_address = value; }
+    void setSalutation(String value) { this.salutation = setEmptyString(value); }
 
-    public BillAddress getCustomerBillAddress() { return this.customer_bill_address; }
-
-    @XmlTransient
-    public void setTelephoneNumber(String value) { this.telephone_number = setEmptyString(value); }
-
-    public String getTelephoneNumber() { return this.telephone_number; }
+    String getSalutation() { return this.salutation; }
 
     @XmlTransient
-    public void setAltTelephoneNumber(String value) { this.alt_telephone_number = setEmptyString(value); }
+    void setFirstName(String value) { this.first_name = setEmptyString(value); }
 
-    public String getAltTelephoneNumber() { return this.alt_telephone_number; }
-
-    @XmlTransient
-    public void setEmailAddress(String value) { this.email_address = setEmptyString(value); }
-
-    public String getEmailAddress() { return this.email_address; }
+    String getFirstName() { return this.first_name; }
 
     @XmlTransient
-    public void setFullName(String value) { this.full_name = setEmptyString(value); }
+    void setLastName(String value) { this.last_name = setEmptyString(value); }
 
-    public String getFullName() { return this.full_name; }
-
-    @XmlTransient
-    public void setAccountNumber(String value) { this.account_number = setEmptyString(value); }
-
-    public String getAccountNumber() { return this.account_number; }
+    String getLastName() { return this.last_name; }
 
     @XmlTransient
-    public void setCreditLimit(String value) { this.credit_limit = setEmptyString(value); }
+    void setCustomerBillAddress(BillAddress value) { this.customer_bill_address = value; }
 
-    public String getCreditLimit() { return this.credit_limit; }
-
-    @XmlTransient
-    public void setContactPref(String value) { this.contact_pref = setEmptyString(value); }
-
-    public String getContactPref() { return this.contact_pref; }
+    BillAddress getCustomerBillAddress() { return this.customer_bill_address; }
 
     @XmlTransient
-    public void setComment(String value) { this.comment = setEmptyString(value); }
+    void setTelephoneNumber(String value) { this.telephone_number = setEmptyString(value); }
 
-    public String getComment() { return this.comment; }
+    String getTelephoneNumber() { return this.telephone_number; }
+
+    @XmlTransient
+    void setAltTelephoneNumber(String value) { this.alt_telephone_number = setEmptyString(value); }
+
+    String getAltTelephoneNumber() { return this.alt_telephone_number; }
+
+    @XmlTransient
+    void setEmailAddress(String value) { this.email_address = setEmptyString(value); }
+
+    String getEmailAddress() { return this.email_address; }
+
+    @XmlTransient
+    void setFullName(String value) { this.full_name = setEmptyString(value); }
+
+    String getFullName() { return this.full_name; }
+
+    @XmlTransient
+    void setAccountNumber(String value) { this.account_number = setEmptyString(value); }
+
+    String getAccountNumber() { return this.account_number; }
+
+    @XmlTransient
+    void setCreditLimit(String value) { this.credit_limit = setEmptyString(value); }
+
+    String getCreditLimit() { return this.credit_limit; }
+
+    @XmlTransient
+    void setContactPref(String value) { this.contact_pref = setEmptyString(value); }
+
+    String getContactPref() { return this.contact_pref; }
+
+    @XmlTransient
+    void setComment(String value) { this.comment = setEmptyString(value); }
+
+    String getComment() { return this.comment; }
 
    // @XmlTransient
-    public void setCurrentDate() {
+    private void setCurrentDate() {
 
 
 
@@ -228,7 +235,7 @@ public class Customer {
 //        Date dt = new Date();
 //        this.current_date_string = dateFormat.format(dt);
 
-    }
+    }//end setCurrentDate method
 
     public String getCurrentDate() { return this.current_date_string; }
 
@@ -248,7 +255,7 @@ public class Customer {
         }
 
         return str;
-    }
+    }//End toString method
 
     private String setEmptyString(String value) {
 
@@ -262,6 +269,6 @@ public class Customer {
         }
 
         return str;
-    }
+    }//End setEmptyString method
 
 }

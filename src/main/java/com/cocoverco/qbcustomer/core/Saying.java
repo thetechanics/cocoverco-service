@@ -19,12 +19,12 @@ public class Saying {
     }
 
     @JsonProperty
-    public long getId() {
+    long getId() {
         return id;
     }
 
     @JsonProperty
-    public String getContent() {
+    String getContent() {
         return content;
     }
 }
