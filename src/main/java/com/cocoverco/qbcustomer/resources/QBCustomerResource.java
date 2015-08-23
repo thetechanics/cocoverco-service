@@ -10,8 +10,26 @@ import com.cocoverco.qbcustomer.core.Saying;
 import com.cocoverco.qbcustomer.core.Customer;
 import com.google.common.base.Optional;
 import com.codahale.metrics.annotation.Timed;
-//import com.sun.xml.internal.bind.v2.TODO;
 //...
+
+//TODO - Impmlement isEqual and hashTag methods
+
+//TODO - Add JavaDocs
+
+//TODO - Complete XML structure
+
+//TODO - Send Email with attachment
+
+//TODO - Add unit tests
+
+//TODO - Explore hosting server/database
+
+//TODO - Save data to database
+
+//TODO - Improve JavaScript validation
+
+//TODO - Put empty form values in array, iterate through to set variables to ""
+
 
 //@Path determines path to call the service (e.g. http://localhost:8080/cocoverco-service)
 @Path("/cocoverco-service")

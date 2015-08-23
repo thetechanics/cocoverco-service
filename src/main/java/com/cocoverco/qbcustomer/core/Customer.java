@@ -13,21 +13,23 @@ import javax.xml.bind.annotation.XmlTransient;
 //import java.util.List;
 //...
 
+
+
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "QBXML")
 public class Customer {
 
     //The property order determines the XML field order
-    @XmlElement (name = "Name", required = true, nillable = true)
+    @XmlElement (name = "Name", nillable = true)
     public String familiar_name;
 
-    @XmlElement (name = "IsActive", required = true, nillable = true)
+    @XmlElement (name = "IsActive", nillable = true)
     public String is_active;
 
-    @XmlElement (name = "CompanyName", required = true, nillable = true)
+    @XmlElement (name = "CompanyName", nillable = true)
     public String company_name;
 
-    @XmlElement (name = "Salutation", required = true, nillable = true)
+    @XmlElement (name = "Salutation", nillable = true)
     public String salutation;
 
     @XmlElement (name = "FirstName", required = true)
@@ -36,34 +38,34 @@ public class Customer {
     @XmlElement (name = "LastName", required = true)
     public String last_name;
 
-    @XmlElement (name = "BillAddress", required = true, nillable = true)
+    @XmlElement (name = "BillAddress", required = true)
     public BillAddress customer_bill_address;
 
-    @XmlElement (name = "Phone", required = true, nillable = true)
+    @XmlElement (name = "Phone", nillable = true)
     public String telephone_number;
 
-    @XmlElement (name = "AltPhone", required = true, nillable = true)
+    @XmlElement (name = "AltPhone", nillable = true)
     public String alt_telephone_number;
 
-    @XmlElement (name = "Email", required = true, nillable = true)
+    @XmlElement (name = "Email", nillable = true)
     public String email_address;
 
-    @XmlElement (name = "FullName", required = true, nillable = true)
+    @XmlElement (name = "FullName", nillable = true)
     public String full_name;
 
-    @XmlElement (name = "AcctNumber", required = true, nillable = true)
+    @XmlElement (name = "AcctNumber", nillable = true)
     public String account_number;
 
-    @XmlElement (name = "CreditLimit", required = true, nillable = true)
+    @XmlElement (name = "CreditLimit", nillable = true)
     public String credit_limit;
 
-    @XmlElement (name = "ContactPref", required = true, nillable = true)
+    @XmlElement (name = "ContactPref", nillable = true)
     public String contact_pref;
 
     @XmlElement (name = "Comment", nillable = true)
     public String comment;
 
-    @XmlElement (name = "CurrentDate", required = true, nillable = true)
+    @XmlElement (name = "CurrentDate", required = true)
     public String current_date_string;
 
 
@@ -132,31 +134,8 @@ public class Customer {
 
         setCurrentDate();
 
-        //TODO - Put empty form values in array, iterate through to set variables to ""
-
     //End Customer(String, String, BillAddress, String, String, String, String)
     }
-
-    //TODO - Impmlement isEqual and hashTag methods
-
-    //TODO - Complete XML structure
-
-    //TODO - Save XML as File
-
-    //TODO - Send Email with attachment
-
-    //TODO - Explore hosting server/database
-
-    //TODO - Save data to database
-
-    //TODO - Explore possible call to optional value to avoid coded XML (e.g. Phone_Pref)
-
-    //TODO - Add unit tests
-
-    //TODO - Add JavaDocs
-
-    //TODO - Add JavaScript validation
-
 
     @XmlTransient
     public void setFamiliarName(String value) { this.familiar_name = setEmptyString(value); }

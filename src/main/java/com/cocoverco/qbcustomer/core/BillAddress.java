@@ -85,16 +85,16 @@ import javax.xml.bind.annotation.*;
 })
 public class BillAddress {
 
-    @XmlElement(name = "Addr1", required = true)
+    @XmlElement(name = "Addr1", nillable = true)
     protected String addr1;
 
-    @XmlElement(name = "Addr2", required = true, nillable = true)
+    @XmlElement(name = "Addr2", nillable = true)
     protected String addr2;
 
-    @XmlElement(name = "City", required = true)
+    @XmlElement(name = "City", nillable = true)
     protected String city;
 
-    @XmlElement(name = "State", required = true)
+    @XmlElement(name = "State", nillable = true)
     protected String state;
 
     @XmlElement(name = "PostalCode", required = true)
