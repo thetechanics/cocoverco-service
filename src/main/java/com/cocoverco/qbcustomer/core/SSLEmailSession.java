@@ -14,24 +14,24 @@ import javax.mail.Session;
  */
 public class SSLEmailSession {
 
-    private final String fromEmail;
+    private final String toEmail;
     private final String host;
     private final String password;
-    private final String toEmail;
+    private final String fromEmail;
 
     public SSLEmailSession(){
-        fromEmail = "rnoftz@comcast.net"; //requires valid gmail id
+        toEmail = "rnoftz@northwestern.edu"; // can be any email id
         host = "smtp.comcast.net";
         password = "c0oldeck"; // correct password for gmail id
-        toEmail = "rnoftz@northwestern.edu"; // can be any email id
+        fromEmail = "rnoftz@comcast.net"; //requires valid gmail id
     }
 
-    public SSLEmailSession(String from, String hst, String pwd, String to){
+    public SSLEmailSession(String to, String hst, String pwd, String from){
 
-        fromEmail = from; //requires valid gmail id
+        toEmail = to; // can be any email id
         host = hst;
         password = pwd; // correct password for gmail id
-        toEmail = to; // can be any email id
+        fromEmail = from; //requires valid gmail id
     }
 
     /**

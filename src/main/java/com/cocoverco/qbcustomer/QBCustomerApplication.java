@@ -33,7 +33,7 @@ public class QBCustomerApplication extends Application<QBCustomerConfiguration> 
         final QBCustomerResource resource = new QBCustomerResource(
                 configuration.getTemplate(),
                 configuration.getDefaultName(),
-                configuration.getEmailSender(),
+                configuration.getEmailRecipient(),
                 configuration.getEmailHost(),
                 configuration.getEmailPassword(),
                 configuration.getEmailSender()
