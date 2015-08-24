@@ -91,6 +91,10 @@ import javax.xml.bind.annotation.*;
         "state",
         "postal_code"
 })
+
+/** BillAddress class intended to represent customer address details for marshalling into XML
+ *@author Russ Noftz 2015
+ */
 public class BillAddress {
 
     @XmlElement(name = "Addr1", nillable = true)
@@ -220,7 +224,7 @@ public class BillAddress {
     /**
      * Gets the value of the postal_code property.
      *
-     * @return  possible object is {@link java.math.BigDecimal }
+     * @return  possible object is {@link String }
      *
      */
     public String getPostalCode() {
@@ -230,7 +234,7 @@ public class BillAddress {
     /**
      * Sets the value of the postal_code property.
      *
-     * @param   value   allowed object is {@link java.math.BigDecimal }
+     * @param   value   allowed object is {@link String }
      *
      */
     @XmlTransient

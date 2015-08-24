@@ -24,14 +24,18 @@ import javax.xml.bind.annotation.*;
         "current_date_string"
 })
 
-/**
- * Zero parameter constructor for Customer class
- *
- *
+/** Customer class intended to represent customer details for marshalling into XML
+ * and formatted for import into QuickBooks.
+ *@author Russ Noftz 2015
  */
 @XmlRootElement(name = "QBXML")
 public class Customer {
 
+    /**
+     * Zero parameter constructor for Customer class
+     *
+     *
+     */
     public Customer() {
 
         // Jackson deserialization
@@ -403,21 +407,16 @@ public class Customer {
     /**
      * Sets the value of the current_date_string member variable
      *
-     * @param   value   A string representing the desired value
-     */
+     **/
     //@XmlTransient
     void setCurrentDate() {
 
         QBFormattedDate qbfd;
-        qbfd = new QBFormattedDate();
+        qbfd = new QBFormattedDate("yyyyMMdd_HHmmss_SSS");
         //System.out.println("qbfd.getDateString() " + qbfd.getDateString());
 
         this.current_date_string = qbfd.getDateString();
         //System.out.println(this.current_date_string);
-
-//        SimpleDateFormat dateFormat = new SimpleDateFormat("MMddyyyy_hhmm");
-//        Date dt = new Date();
-//        this.current_date_string = dateFormat.format(dt);
 
     }//end setCurrentDate method
 
@@ -433,6 +432,7 @@ public class Customer {
      * Gets the value of all of the member variable formatted into a concatenated string.
      *
      * @return  possible object is {@link String }
+     * @throws Exception
      *
      */
     public String toString(){

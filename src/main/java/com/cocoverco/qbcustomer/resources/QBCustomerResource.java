@@ -4,33 +4,42 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.io.*;
 import java.util.concurrent.atomic.AtomicLong;
-import com.cocoverco.qbcustomer.core.BillAddress;
-import com.cocoverco.qbcustomer.core.QBFormattedDate;
-import com.cocoverco.qbcustomer.core.Saying;
-import com.cocoverco.qbcustomer.core.Customer;
+
+import com.cocoverco.qbcustomer.core.*;
 import com.google.common.base.Optional;
 import com.codahale.metrics.annotation.Timed;
 
 
-//TODO - Add JavaDocs
+/*
+TODO - Send Email with attachment
 
-//TODO - Complete XML structure
+TODO - Implement USAddress interface
 
-//TODO - Send Email with attachment
+TODO - Get properties from config file (date format, email authentication details, etc.)
 
-//TODO - Add unit tests
+TODO - Define exception handling more specifically
 
-//TODO - Explore hosting server/database
+TODO - Complete XML structure
 
-//TODO - Save data to database
+TODO - Display thank you message to user and forward to Home
 
-//TODO - Improve JavaScript validation
+TODO - Add unit tests
 
-//TODO - Impmlement equal and hashCode methods
+TODO - Explore hosting server/database
 
-//TODO - Put empty form values in array, iterate through to set variables to ""
+TODO - Save data to database
+
+TODO - Improve JavaScript validation
+
+TODO - Impmlement equal and hashCode methods
+
+TODO - Put empty form values in array, iterate through to set variables to ""
+*/
 
 
+/** QBCustomerResource  class implements jersey web service
+ *@author Russ Noftz 2015
+ */
 //@Path determines URL path to call the service (e.g. <host>/cocoverco-service)
 @Path("/cocoverco-service")
 //Jersey resource class to define the behavior for a specific URI/Request type.  e.g. <Base URL>/cocoverco-service, GET
@@ -42,7 +51,14 @@ public class QBCustomerResource {
     //Declare counter variable as AtomicLong
     private final AtomicLong counter;
 
-    //QBCustomerResource constructor that takes two String parameters
+    /**
+     * Constructor that accepts two string parameters for use in defining output template
+     * and default user name (from YML file) if one is not provided.
+     *
+     * @param   template    A reference to a YML template file
+     * @param   defaultName name defined in the YML file to be used if no name is provided from the client
+     *
+     * */
     public QBCustomerResource(String template, String defaultName) {
         //Define this instance of the 'template' variable as the parameter 'template'
         this.template = template;
@@ -52,6 +68,26 @@ public class QBCustomerResource {
         this.counter = new AtomicLong();
     }//End QBCustomerResource(String, String) constructor
 
+    /**
+     * Method that gets called from the web service when the client submits a POST request.  The method
+     * pulls values from the POST request using the @FormParam annotations.  The method passes those through
+     * to the Customer and BillAddress objects and the method writes the resulting XML to a date stamped file.
+     * <p/>
+     * Temporarily returns the de-serialized customer object back to the client as XML.  The intended behavior is
+     * display a thank you message and return the user to the web site Home page
+     *
+     * @param   first_name  Value from the First Name field of the client form
+     * @param   last_name   Value from the First Name field of the client form
+     * @param   addr_1      Value from the First Name field of the client form
+     * @param   addr_2      Value from the First Name field of the client form
+     * @param   city        Value from the First Name field of the client form
+     * @param   state       Value from the First Name field of the client form
+     * @param   postal_code Value from the First Name field of the client form
+     * @throws  javax.xml.bind.JAXBException
+     * @throws  FileNotFoundException
+     * @throws  IOException
+     *
+     * */
     //@POST annotation determines that this method will be called for client POST requests
     @POST
     //@Produces annotation determines the return format
@@ -88,7 +124,7 @@ public class QBCustomerResource {
                 comment);
 
         //Declare and define QBFormattedDate object
-        QBFormattedDate qbfd = new QBFormattedDate("yyyyMMdd_hhmmss");
+//        QBFormattedDate qbfd = new QBFormattedDate("yyyyMMdd_HHmmss_SSS");
 
         //Marshal Customer object and write to a file
         try {
@@ -96,7 +132,8 @@ public class QBCustomerResource {
             javax.xml.bind.Marshaller marshaller = jaxbCtx.createMarshaller();
             marshaller.setProperty(javax.xml.bind.Marshaller.JAXB_ENCODING, "UTF-8"); //NOI18N
             marshaller.setProperty(javax.xml.bind.Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-            OutputStream os = new FileOutputStream( "cocoverco_test_" + qbfd.getDateString() + ".txt" );
+//            OutputStream os = new FileOutputStream( "cocoverco_test_" + qbfd.getDateString() + ".txt" );
+            OutputStream os = new FileOutputStream( "qb_customer_xml_" + customer.getCurrentDate() + ".txt" );
             marshaller.marshal( customer, os );
             os.close();
 
@@ -109,20 +146,15 @@ public class QBCustomerResource {
         }
 
         //Create attach XML to email and send
-        /*SendFileEmail sendFileEmail = new SendFileEmail("rnoftz@northwestern.edu",
-                "rnoftz@comcast.net",
-                "Email with attachment",
-                "Test Email From QBCustomerResource",
-                "file.txt");
-
-        sendFileEmail.sendEmailAttachment();*/
+        SSLEmailSession session = new SSLEmailSession();
+        session.getSSLSession();
 
         return customer;
 
     } //End getCustomer(String, String, String, String, String, String, String, String, String, String, String)
 
     /*
-    //Commenting out GET response - Throws exceptions fix as able
+    //Commenting out GET response - Throws exception, fix as able
     //??? Consumes necessary?
     //@Consumes("application/x-www-form-urlencoded")
     //@GET annotation determines that this method will be called for client GET requests
