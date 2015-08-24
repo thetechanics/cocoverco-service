@@ -67,6 +67,7 @@
  */
 
 /* Modifications made for this specific implementation - Russ Noftz, 2015
+ * Create USAddress interface and implement it here.
  * <pre>
  * &lt;complexType name="BillAddress">
  *   &lt;element name="addr1" type="{http://www.w3.org/2001/XMLSchema}string"/>
@@ -93,9 +94,9 @@ import javax.xml.bind.annotation.*;
 })
 
 /** BillAddress class intended to represent customer address details for marshalling into XML
- *@author Russ Noftz 2015
+ *
  */
-public class BillAddress {
+public class BillAddress implements USAddress {
 
     @XmlElement(name = "Addr1", nillable = true)
     private String addr1;
@@ -143,9 +144,7 @@ public class BillAddress {
      * @return  possible object is {@link String }
      *
      */
-    String getAddr1() {
-        return this.addr1;
-    }
+    public String getAddr1() { return this.addr1; }
 
     /**
      * Sets the value of the addr1 property.
@@ -175,7 +174,7 @@ public class BillAddress {
      *
      */
     @XmlTransient
-    void setAddr2(String value) {
+    protected void setAddr2(String value) {
         this.addr2 = value;
     }
 
@@ -196,7 +195,7 @@ public class BillAddress {
      *
      */
     @XmlTransient
-    void setCity(String value) {
+    protected void setCity(String value) {
         this.city = value;
     }
 
@@ -217,7 +216,7 @@ public class BillAddress {
      *
      */
     @XmlTransient
-    void setState(String value) {
+    protected void setState(String value) {
         this.state = value;
     }
 
@@ -238,7 +237,7 @@ public class BillAddress {
      *
      */
     @XmlTransient
-    void setPostalCode(String value) {
+    protected void setPostalCode(String value) {
         this.postal_code = value;
     }
 
