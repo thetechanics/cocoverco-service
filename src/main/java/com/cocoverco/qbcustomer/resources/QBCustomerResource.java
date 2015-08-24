@@ -10,33 +10,6 @@ import com.google.common.base.Optional;
 import com.codahale.metrics.annotation.Timed;
 
 
-/*
-TODO - Send Email with attachment
-
-TODO - Implement USAddress interface
-
-TODO - Get properties from config file (date format, email authentication details, etc.)
-
-TODO - Define exception handling more specifically
-
-TODO - Complete XML structure
-
-TODO - Display thank you message to user and forward to Home
-
-TODO - Add unit tests
-
-TODO - Explore hosting server/database
-
-TODO - Save data to database
-
-TODO - Improve JavaScript validation
-
-TODO - Impmlement equal and hashCode methods
-
-TODO - Put empty form values in array, iterate through to set variables to ""
-*/
-
-
 /** QBCustomerResource  class implements jersey web service
  *@author Russ Noftz 2015
  */
@@ -48,22 +21,42 @@ public class QBCustomerResource {
     private final String template;
     //Declare defauultName variable as String
     private final String defaultName;
+    //Declare email address to send attachments
+    private final String emailTo;
+    //Declare email host name
+    private final String emailHost;
+    //Declare email service password
+    private final String emailPwd;
+    //Declare final String emailFrom;
+    private final String emailFrom;
     //Declare counter variable as AtomicLong
     private final AtomicLong counter;
+
+    //* @param   template    A reference to a YML template file
+    //* @param   defaultName name defined in the YML file to be used if no name is provided from the client
+
 
     /**
      * Constructor that accepts two string parameters for use in defining output template
      * and default user name (from YML file) if one is not provided.
      *
-     * @param   template    A reference to a YML template file
-     * @param   defaultName name defined in the YML file to be used if no name is provided from the client
      *
      * */
-    public QBCustomerResource(String template, String defaultName) {
+    //public QBCustomerResource(String template, String defaultName, String emailTo, String emailPwd, String emailFrom) {
+    public QBCustomerResource(String template, String defaultName, String emailTo, String emailHost, String emailPwd, String emailFrom) {
         //Define this instance of the 'template' variable as the parameter 'template'
         this.template = template;
         //Define this instance of the 'defaultName' variable as the parameter 'defaultName'
         this.defaultName = defaultName;
+        System.out.println("QBCustomerResource constructor: " + emailTo + " " + emailHost + " " + emailPwd + " " + emailFrom);
+        //Define this instance of the 'emailTo' variable
+        this.emailTo = emailTo;
+        //Define this instance of the 'emailHost' variable
+        this.emailHost = emailHost;
+        //Define this instance of the 'emailPwd' variable
+        this.emailPwd = emailPwd;
+        //Define this instance of the 'emailFrom' variable
+        this.emailFrom = emailFrom;
         //Define this instance of the 'counter' variable as a new AtomicLong object with an initial value of zero
         this.counter = new AtomicLong();
     }//End QBCustomerResource(String, String) constructor
@@ -83,9 +76,6 @@ public class QBCustomerResource {
      * @param   city        Value from the First Name field of the client form
      * @param   state       Value from the First Name field of the client form
      * @param   postal_code Value from the First Name field of the client form
-     * @throws  javax.xml.bind.JAXBException
-     * @throws  FileNotFoundException
-     * @throws  IOException
      *
      * */
     //@POST annotation determines that this method will be called for client POST requests
@@ -107,6 +97,8 @@ public class QBCustomerResource {
                                 @FormParam("contact_pref") String contact_pref,
                                 @FormParam("comment") String comment){
 
+        String filename;
+
         //Declare and define BillAddress object
         final BillAddress billAddress = new BillAddress(addr_1,
                 addr_2,
@@ -123,8 +115,8 @@ public class QBCustomerResource {
                 contact_pref,
                 comment);
 
-        //Declare and define QBFormattedDate object
-//        QBFormattedDate qbfd = new QBFormattedDate("yyyyMMdd_HHmmss_SSS");
+        //Declare and define filename for writing and sending file
+        filename = "qb_customer_xml_" + customer.getCurrentDate() + ".txt";
 
         //Marshal Customer object and write to a file
         try {
@@ -132,8 +124,7 @@ public class QBCustomerResource {
             javax.xml.bind.Marshaller marshaller = jaxbCtx.createMarshaller();
             marshaller.setProperty(javax.xml.bind.Marshaller.JAXB_ENCODING, "UTF-8"); //NOI18N
             marshaller.setProperty(javax.xml.bind.Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-//            OutputStream os = new FileOutputStream( "cocoverco_test_" + qbfd.getDateString() + ".txt" );
-            OutputStream os = new FileOutputStream( "qb_customer_xml_" + customer.getCurrentDate() + ".txt" );
+            OutputStream os = new FileOutputStream( filename );
             marshaller.marshal( customer, os );
             os.close();
 
@@ -146,8 +137,8 @@ public class QBCustomerResource {
         }
 
         //Create attach XML to email and send
-        SSLEmailSession session = new SSLEmailSession();
-        session.getSSLSession();
+        SSLEmailSession session = new SSLEmailSession(emailTo, emailHost, emailPwd, emailFrom);
+        session.getSSLSession(filename);
 
         return customer;
 
@@ -213,3 +204,29 @@ public class QBCustomerResource {
 
 
 } //End QBCustomerResource class
+
+/*
+TODO - Implement USAddress interface
+
+TODO - Get properties from config file (date format, email subject, email body, filename prefix, etc.)
+
+TODO - Add customer name and contact info to email body
+
+TODO - Define exception handling more specifically
+
+TODO - Complete XML structure
+
+TODO - Display thank you message to user and forward to Home
+
+TODO - Add unit tests
+
+TODO - Explore hosting server/database
+
+TODO - Save data to database
+
+TODO - Improve JavaScript validation
+
+TODO - Impmlement equal and hashCode methods
+
+TODO - Put empty form values in array, iterate through to set variables to ""
+*/

@@ -15,21 +15,23 @@ import javax.mail.Session;
 public class SSLEmailSession {
 
     private final String fromEmail;
+    private final String host;
     private final String password;
     private final String toEmail;
 
     public SSLEmailSession(){
         fromEmail = "rnoftz@comcast.net"; //requires valid gmail id
+        host = "smtp.comcast.net";
         password = "c0oldeck"; // correct password for gmail id
         toEmail = "rnoftz@northwestern.edu"; // can be any email id
     }
 
-    public SSLEmailSession(String from, String pwd, String to){
+    public SSLEmailSession(String from, String hst, String pwd, String to){
 
         fromEmail = from; //requires valid gmail id
+        host = hst;
         password = pwd; // correct password for gmail id
         toEmail = to; // can be any email id
-
     }
 
     /**
@@ -38,14 +40,14 @@ public class SSLEmailSession {
      Use Authentication: Yes
      Port for SSL: 465
      */
-    public void getSSLSession() {
+    public void getSSLSession(String filename) {
 //        final String fromEmail = "rnoftz@comcast.net"; //requires valid gmail id
 //        final String password = "c0oldeck"; // correct password for gmail id
 //        final String toEmail = "rnoftz@northwestern.edu"; // can be any email id
 
         System.out.println("SSLEmail Start");
         Properties props = new Properties();
-        props.put("mail.smtp.host", "smtp.comcast.net"); //SMTP Host
+        props.put("mail.smtp.host", host); //SMTP Host
         props.put("mail.smtp.socketFactory.port", "465"); //SSL Port
         props.put("mail.smtp.socketFactory.class",
                 "javax.net.ssl.SSLSocketFactory"); //SSL Factory Class
@@ -63,7 +65,12 @@ public class SSLEmailSession {
         System.out.println("Session created");
         //EmailUtil.sendEmail(session, toEmail,"SSLEmail Testing Subject", "SSLEmail Testing Body");
 
-        EmailUtil.sendAttachmentEmail(session, toEmail,"SSLEmail Testing Subject with Attachment", "SSLEmail Testing Body with Attachment", "qb_customer_xml_20150823_153157_069.txt");
+        EmailUtil.sendAttachmentEmail(session,
+                fromEmail,
+                toEmail,
+                "Web Submission w/Attachment",
+                "Find attached the Quickbooks customer import file",
+                filename);
 
         //EmailUtil.sendImageEmail(session, toEmail,"SSLEmail Testing Subject with Image", "SSLEmail Testing Body with Image");
 

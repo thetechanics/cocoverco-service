@@ -17,6 +17,10 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
+/**
+ * @author Pankaj
+ * Code provided by Pankaj on February 9 2014 via JournalDev website
+ */
 public class EmailUtil {
 
     /**
@@ -63,16 +67,16 @@ public class EmailUtil {
      * @param subject
      * @param body
      */
-    public static void sendAttachmentEmail(Session session, String toEmail, String subject, String body, String filename){
+    public static void sendAttachmentEmail(Session session, String fromEmail, String toEmail, String subject, String body, String filename){
         try{
             MimeMessage msg = new MimeMessage(session);
             msg.addHeader("Content-type", "text/HTML; charset=UTF-8");
             msg.addHeader("format", "flowed");
             msg.addHeader("Content-Transfer-Encoding", "8bit");
 
-            msg.setFrom(new InternetAddress("rnoftz@comcast.net", "NoReply-Comcast"));
+            msg.setFrom(new InternetAddress(fromEmail, "Russ Noftz"));
 
-            msg.setReplyTo(InternetAddress.parse("rnoftz@comcast.net", false));
+            msg.setReplyTo(InternetAddress.parse(fromEmail, false));
 
             msg.setSubject(subject, "UTF-8");
 

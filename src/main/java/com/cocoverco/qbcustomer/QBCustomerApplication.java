@@ -11,6 +11,7 @@ import com.cocoverco.qbcustomer.health.TemplateHealthCheck;
 public class QBCustomerApplication extends Application<QBCustomerConfiguration> {
     //psvm
     public static void main(String[] args) throws Exception {
+        System.out.println("Start of QBCustomerApplication.main method");
         //Call local 'run' method.  Pass command line arguments (dropwizard YML file).  e.g. 'java -jar ... server cocoverco-service.yml'
         new QBCustomerApplication().run(args);
     }
@@ -28,9 +29,14 @@ public class QBCustomerApplication extends Application<QBCustomerConfiguration> 
     @Override
     public void run(QBCustomerConfiguration configuration,
                     Environment environment) {
+        System.out.println("Inside QBCustomerApplication.run method");
         final QBCustomerResource resource = new QBCustomerResource(
                 configuration.getTemplate(),
-                configuration.getDefaultName()
+                configuration.getDefaultName(),
+                configuration.getEmailSender(),
+                configuration.getEmailHost(),
+                configuration.getEmailPassword(),
+                configuration.getEmailSender()
         );
 
         final TemplateHealthCheck healthCheck =

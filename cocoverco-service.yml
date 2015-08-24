@@ -1,2 +1,6 @@
 template: Hello, %s %s of %s %s %s, %s %s with %s and %s!
 defaultName: Stranger
+emailRecipient: rnoftz@northwestern.edu
+emailHost: smtp.comcast.net
+emailPassword: c0oldeck
+emailSender: rnoftz@comcast.net
