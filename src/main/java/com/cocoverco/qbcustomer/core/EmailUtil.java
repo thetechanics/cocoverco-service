@@ -19,7 +19,9 @@ import javax.mail.internet.MimeMultipart;
 
 /**
  * @author Pankaj
+ * @author Russ Noftz
  * Code provided by Pankaj on February 9 2014 via JournalDev website
+ * Changes made as necessary to implement EmailUtil for QBCustomerResource
  */
 public class EmailUtil {
 
@@ -63,25 +65,29 @@ public class EmailUtil {
     /**
      * Utility method to send email with attachment
      * @param session
+     * @param fromEmail
      * @param toEmail
      * @param subject
      * @param body
+     * @param filename
      */
     public static void sendAttachmentEmail(Session session, String fromEmail, String toEmail, String subject, String body, String filename){
         try{
+            //Create mime message type for session
             MimeMessage msg = new MimeMessage(session);
+            //Define message headers
             msg.addHeader("Content-type", "text/HTML; charset=UTF-8");
             msg.addHeader("format", "flowed");
             msg.addHeader("Content-Transfer-Encoding", "8bit");
-
+            //Define sender of message
             msg.setFrom(new InternetAddress(fromEmail, "Russ Noftz"));
-
+            //Define return email address
             msg.setReplyTo(InternetAddress.parse(fromEmail, false));
-
+            //Define message subject
             msg.setSubject(subject, "UTF-8");
-
+            //Define message send timestamp
             msg.setSentDate(new Date());
-
+            //Define message recipient
             msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail, false));
 
             // Create the message body part
@@ -93,18 +99,21 @@ public class EmailUtil {
             // Create a multipart message for attachment
             Multipart multipart = new MimeMultipart();
 
-            // Set text message part
+            // Set text message body part to multi-part message
             multipart.addBodyPart(messageBodyPart);
 
             // Second part is attachment
             messageBodyPart = new MimeBodyPart();
             //String filename = "qb_customer_xml_20150823_153157_069.txt";
             DataSource source = new FileDataSource(filename);
+            //Define data handler for attachment
             messageBodyPart.setDataHandler(new DataHandler(source));
+            //Identify artifact to attache
             messageBodyPart.setFileName(filename);
+            //Add attachment body part to multi-part message
             multipart.addBodyPart(messageBodyPart);
 
-            // Send the complete message parts
+            // Add the multi-part content to the message
             msg.setContent(multipart);
 
             // Send message

@@ -10,7 +10,9 @@ import javax.mail.Session;
 
 /**
  * @author Pankaj
+ * @author Russ Noftz
  * Code provided by Pankaj on February 9 2014 via JournalDev website
+ * Changes made as necessary to implement EmailUtil for QBCustomerResource
  */
 public class SSLEmailSession {
 
@@ -19,6 +21,9 @@ public class SSLEmailSession {
     private final String password;
     private final String fromEmail;
 
+    /**
+     * No parameter constructor
+     */
     public SSLEmailSession(){
         toEmail = "rnoftz@northwestern.edu"; // can be any email id
         host = "smtp.comcast.net";
@@ -26,27 +31,37 @@ public class SSLEmailSession {
         fromEmail = "rnoftz@comcast.net"; //requires valid gmail id
     }
 
+    /**
+     * Multi-parameter constructor
+     * @param to    Email recipient
+     * @param hst   Email service host name
+     * @param pwd   Email service password
+     * @param from  Email sender
+     */
     public SSLEmailSession(String to, String hst, String pwd, String from){
 
-        toEmail = to; // can be any email id
+        //Recipient email address
+        toEmail = to;
+        //Email service host name
         host = hst;
-        password = pwd; // correct password for gmail id
-        fromEmail = from; //requires valid gmail id
+        //Email service password
+        password = pwd;
+        //Sender email address
+        fromEmail = from;
     }
 
     /**
-     Outgoing Mail (SMTP) Server
-     requires TLS or SSL: smtp.gmail.com (use authentication)
-     Use Authentication: Yes
-     Port for SSL: 465
+     * Method to open session with email service and to call EmailUtil to send message.
+     *requires TLS or SSL: smtp.gmail.com (use authentication)
+     *Use Authentication: Yes
+     *Port for SSL: 465
      */
     public void getSSLSession(String filename) {
-//        final String fromEmail = "rnoftz@comcast.net"; //requires valid gmail id
-//        final String password = "c0oldeck"; // correct password for gmail id
-//        final String toEmail = "rnoftz@northwestern.edu"; // can be any email id
 
         System.out.println("SSLEmail Start");
+        //Instantiate Properties object
         Properties props = new Properties();
+        //Populate properties as needed for email session
         props.put("mail.smtp.host", host); //SMTP Host
         props.put("mail.smtp.socketFactory.port", "465"); //SSL Port
         props.put("mail.smtp.socketFactory.class",
@@ -54,6 +69,7 @@ public class SSLEmailSession {
         props.put("mail.smtp.auth", "true"); //Enabling SMTP Authentication
         props.put("mail.smtp.port", "465"); //SMTP Port
 
+        //Instantiate Authenticator object to log into email service
         Authenticator auth = new Authenticator() {
             //override the getPasswordAuthentication method
             protected PasswordAuthentication getPasswordAuthentication() {
@@ -61,10 +77,14 @@ public class SSLEmailSession {
             }
         };
 
+        //Create active email session
         Session session = Session.getDefaultInstance(props, auth);
         System.out.println("Session created");
+
+        //Commented - Send email w/o attachment
         //EmailUtil.sendEmail(session, toEmail,"SSLEmail Testing Subject", "SSLEmail Testing Body");
 
+        //Send email with attachment
         EmailUtil.sendAttachmentEmail(session,
                 fromEmail,
                 toEmail,
@@ -72,7 +92,6 @@ public class SSLEmailSession {
                 "Find attached the Quickbooks customer import file",
                 filename);
 
-        //EmailUtil.sendImageEmail(session, toEmail,"SSLEmail Testing Subject with Image", "SSLEmail Testing Body with Image");
 
     }
 

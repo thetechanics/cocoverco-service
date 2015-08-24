@@ -85,7 +85,7 @@ public class QBCustomerResource {
     //@Timed will generate a Jersey metric for the time spent in the method
     @Timed
     //@FormParam annotation captures the form values from the client request
-    public Customer getCustomer(@FormParam("first_name") String first_name,
+    public Customer postCustomer(@FormParam("first_name") String first_name,
                                 @FormParam("last_name") String last_name,
                                 @FormParam("street_1") String addr_1,
                                 @FormParam("street_2") String addr_2,
@@ -145,7 +145,7 @@ public class QBCustomerResource {
     } //End getCustomer(String, String, String, String, String, String, String, String, String, String, String)
 
     /*
-    //Commenting out GET response - Throws exception, fix as able
+    //Commenting out GET response - Reimplement as getCustomer GET.  Throws exception, fix as able
     //??? Consumes necessary?
     //@Consumes("application/x-www-form-urlencoded")
     //@GET annotation determines that this method will be called for client GET requests
@@ -154,11 +154,11 @@ public class QBCustomerResource {
     @Produces(MediaType.APPLICATION_JSON)
     //@Timed will generate a Jersey metric for the time spent in the method
     @Timed
-    //The 'sayHello' method takes the 'first_name' parameter value from the client as well as an optional String parameter
-    //@FormParam("first_name") captures the value of the 'first_name' parameter from the client POST request.
+    //The 'getCustomer' method takes the form parameters from the client
+    //@FormParam("first_name") captures the form values from the client GET request.
     //The incoming parameter is cast an an 'Optional' object, with a String constructor
     //Jersey @FormParam annotation requires '@Consumes("application/x-www-form-urlencoded"'
-    public Saying sayHello(@FormParam("first_name") Optional<String> first_name,
+    public Customer getCustomer(@FormParam("first_name") Optional<String> first_name,
                            @FormParam("last_name") Optional<String> last_name,
                            @FormParam("street_1") Optional<String> street_1,
                            @FormParam("street_2") Optional<String> street_2,
@@ -171,7 +171,7 @@ public class QBCustomerResource {
                            @FormParam("telephone_pref") Optional<String> telephone_pref,
                            @FormParam("comment") Optional<String> comment ) {
         //Define the String variable 'value' using the 'template' format provided in the constructor
-        //NOTE - To add field to the output, ??? add a form parameter to the 'Saying' class (e.g. last_name) ???
+        //NOTE - To add field to the output, ??? add a form parameter to the 'Customer' class (e.g. last_name) ???
         //and add a String object (e.g. %s) to the template (e.g. cocoverco-service.yml)
         //and an additional parameter to 'format' (e.g. last_name.or(""))
 
@@ -194,20 +194,16 @@ public class QBCustomerResource {
             e.printStackTrace();
         }
 
-        //Return a new Saying object to the client with an incremented counter and the formatted String 'value' variable
-        return new Saying(counter.incrementAndGet(),value);
+        //Return a new Customer objeect to the client provided values
+        return new Customer(String, String, String, String, String, String, String);
 
 
-    } //End sayHello method
+    } //End getCustomer method
     */
-
-
 
 } //End QBCustomerResource class
 
 /*
-TODO - Implement USAddress interface
-
 TODO - Get properties from config file (date format, email subject, email body, filename prefix, etc.)
 
 TODO - Add customer name and contact info to email body
