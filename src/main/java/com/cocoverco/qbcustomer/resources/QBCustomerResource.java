@@ -214,7 +214,7 @@ TODO - Complete XML structure
 
 TODO - Display thank you message to user and forward to Home
 
-TODO - Add unit tests
+TODO - Add unit tests (TestCustomerXMLClient)
 
 TODO - Explore hosting server/database
 
