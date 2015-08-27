@@ -214,9 +214,9 @@ TODO - Define exception handling more specifically
 
 TODO - Complete XML structure
 
-TODO - Display thank you message to user and forward to Home
+TODO - Display thank you message to user and forward to Home page
 
-TODO - Add unit tests (TestCustomerXMLClient)
+TODO - Add unit tests (e.g. TestCustomerXMLClient)
 
 TODO - Explore hosting server/database
 
@@ -224,7 +224,7 @@ TODO - Save data to database
 
 TODO - Improve JavaScript validation
 
-TODO - Impmlement equal and hashCode methods
+TODO - Implement equal and hashCode methods
 
 TODO - Put empty form values in array, iterate through to set variables to ""
 */
