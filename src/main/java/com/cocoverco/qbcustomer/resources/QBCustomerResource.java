@@ -204,7 +204,9 @@ public class QBCustomerResource {
 } //End QBCustomerResource class
 
 /*
-TODO - Get properties from config file (date format, email subject, email body, filename prefix, etc.)
+TODO - Dynamically add well cover dimension fields to client/values to Customer object
+
+TODO - Add properties to config file (date format, email subject, email body, filename prefix, etc.)
 
 TODO - Add customer name and contact info to email body
 
